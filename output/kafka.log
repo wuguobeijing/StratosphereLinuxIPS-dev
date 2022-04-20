@@ -1,0 +1,562 @@
+2022-04-19 22:43:38.611 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 22:47:29.468 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 22:50:21.528 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 22:51:49.186 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 23:00:42.778 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 23:02:29.196 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 23:05:31.407 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 23:05:37.623 | INFO     | __main__:<module>:95 - conn_topic
+2022-04-19 23:11:53.716 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-19 23:12:02.953 | INFO     | __main__:<module>:95 - conn_topic
+2022-04-19 23:12:03.140 | INFO     | __main__:extract_log:30 -                                               uid  ... resp_bytes
+ts                                                 ...           
+2022-04-14 11:10:43.261619200  C3Wm9e3plGA6WDaKai  ...        NaN
+2022-04-14 11:10:51.371795968  CkxRBI3if0sDexohth  ...        0.0
+2022-04-14 11:10:51.387665920  CcE2xQ3yiLYTFJJfci  ...        0.0
+2022-04-14 11:10:59.641613056  CZpmaf1eyBrkxqBnPk  ...        NaN
+2022-04-14 11:11:05.789635840  CaCz68451Hr1oZNE2j  ...        NaN
+
+[5 rows x 19 columns]
+2022-04-19 23:12:03.226 | INFO     | __main__:extract_log:32 - uid               object
+id.orig_h         object
+id.orig_p          int64
+id.resp_h         object
+id.resp_p          int64
+proto             object
+conn_state        object
+local_orig          bool
+local_resp          bool
+missed_bytes       int64
+history           object
+orig_pkts          int64
+orig_ip_bytes      int64
+resp_pkts          int64
+resp_ip_bytes      int64
+service           object
+duration         float64
+orig_bytes       float64
+resp_bytes       float64
+dtype: object
+2022-04-19 23:12:03.230 | INFO     | __main__:extract_log:35 - DF Shape: (310, 19)
+2022-04-19 23:12:03.230 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:03.239 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:03.240 | INFO     | __main__:extract_log:40 - 	 uid: 	0.02 MB
+2022-04-19 23:12:03.240 | INFO     | __main__:extract_log:40 - 	 id.orig_h: 	0.02 MB
+2022-04-19 23:12:03.241 | INFO     | __main__:extract_log:40 - 	 id.orig_p: 	0.00 MB
+2022-04-19 23:12:03.241 | INFO     | __main__:extract_log:40 - 	 id.resp_h: 	0.02 MB
+2022-04-19 23:12:03.242 | INFO     | __main__:extract_log:40 - 	 id.resp_p: 	0.00 MB
+2022-04-19 23:12:03.243 | INFO     | __main__:extract_log:40 - 	 proto: 	0.02 MB
+2022-04-19 23:12:03.243 | INFO     | __main__:extract_log:40 - 	 conn_state: 	0.02 MB
+2022-04-19 23:12:03.244 | INFO     | __main__:extract_log:40 - 	 local_orig: 	0.00 MB
+2022-04-19 23:12:03.244 | INFO     | __main__:extract_log:40 - 	 local_resp: 	0.00 MB
+2022-04-19 23:12:03.245 | INFO     | __main__:extract_log:40 - 	 missed_bytes: 	0.00 MB
+2022-04-19 23:12:03.245 | INFO     | __main__:extract_log:40 - 	 history: 	0.02 MB
+2022-04-19 23:12:03.246 | INFO     | __main__:extract_log:40 - 	 orig_pkts: 	0.00 MB
+2022-04-19 23:12:03.246 | INFO     | __main__:extract_log:40 - 	 orig_ip_bytes: 	0.00 MB
+2022-04-19 23:12:03.247 | INFO     | __main__:extract_log:40 - 	 resp_pkts: 	0.00 MB
+2022-04-19 23:12:03.247 | INFO     | __main__:extract_log:40 - 	 resp_ip_bytes: 	0.00 MB
+2022-04-19 23:12:03.248 | INFO     | __main__:extract_log:40 - 	 service: 	0.01 MB
+2022-04-19 23:12:03.248 | INFO     | __main__:extract_log:40 - 	 duration: 	0.00 MB
+2022-04-19 23:12:03.249 | INFO     | __main__:extract_log:40 - 	 orig_bytes: 	0.00 MB
+2022-04-19 23:12:03.249 | INFO     | __main__:extract_log:40 - 	 resp_bytes: 	0.00 MB
+2022-04-19 23:12:03.250 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:03.604 | INFO     | __main__:<module>:95 - x509_topic
+2022-04-19 23:12:03.683 | INFO     | __main__:extract_log:30 -                                                id  ...  basic_constraints.ca
+ts                                                 ...                      
+2022-04-14 12:13:56.063949056   FyXmvmDVo32v7jGL1  ...                 False
+2022-04-14 12:13:56.095213056  FloShR1fdXjFXnwud9  ...                 False
+
+[2 rows x 14 columns]
+2022-04-19 23:12:03.769 | INFO     | __main__:extract_log:32 - id                              object
+certificate.version              int64
+certificate.serial              object
+certificate.subject             object
+certificate.issuer              object
+certificate.not_valid_before     int64
+certificate.not_valid_after      int64
+certificate.key_alg             object
+certificate.sig_alg             object
+certificate.key_type            object
+certificate.key_length           int64
+certificate.exponent             int64
+san.dns                         object
+basic_constraints.ca              bool
+dtype: object
+2022-04-19 23:12:03.773 | INFO     | __main__:extract_log:35 - DF Shape: (2, 14)
+2022-04-19 23:12:03.774 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:03.782 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:03.783 | INFO     | __main__:extract_log:40 - 	 id: 	0.00 MB
+2022-04-19 23:12:03.784 | INFO     | __main__:extract_log:40 - 	 certificate.version: 	0.00 MB
+2022-04-19 23:12:03.785 | INFO     | __main__:extract_log:40 - 	 certificate.serial: 	0.00 MB
+2022-04-19 23:12:03.786 | INFO     | __main__:extract_log:40 - 	 certificate.subject: 	0.00 MB
+2022-04-19 23:12:03.788 | INFO     | __main__:extract_log:40 - 	 certificate.issuer: 	0.00 MB
+2022-04-19 23:12:03.789 | INFO     | __main__:extract_log:40 - 	 certificate.not_valid_before: 	0.00 MB
+2022-04-19 23:12:03.790 | INFO     | __main__:extract_log:40 - 	 certificate.not_valid_after: 	0.00 MB
+2022-04-19 23:12:03.791 | INFO     | __main__:extract_log:40 - 	 certificate.key_alg: 	0.00 MB
+2022-04-19 23:12:03.791 | INFO     | __main__:extract_log:40 - 	 certificate.sig_alg: 	0.00 MB
+2022-04-19 23:12:03.792 | INFO     | __main__:extract_log:40 - 	 certificate.key_type: 	0.00 MB
+2022-04-19 23:12:03.793 | INFO     | __main__:extract_log:40 - 	 certificate.key_length: 	0.00 MB
+2022-04-19 23:12:03.794 | INFO     | __main__:extract_log:40 - 	 certificate.exponent: 	0.00 MB
+2022-04-19 23:12:03.796 | INFO     | __main__:extract_log:40 - 	 san.dns: 	0.00 MB
+2022-04-19 23:12:03.796 | INFO     | __main__:extract_log:40 - 	 basic_constraints.ca: 	0.00 MB
+2022-04-19 23:12:03.799 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:03.951 | INFO     | __main__:<module>:95 - http_topic
+2022-04-19 23:12:04.007 | INFO     | __main__:extract_log:30 -                                               uid  ...              resp_mime_types
+ts                                                 ...                             
+2022-04-14 11:11:50.276422912   CcQIDV4E7iRiSQ26l  ...                          NaN
+2022-04-14 11:14:26.822987008  CJSMgK2zfn5cgefSq6  ...  [application/ocsp-response]
+2022-04-14 11:16:34.985133056  CvGIs73Huc3U2e8SKb  ...                          NaN
+2022-04-14 11:21:50.338636032  CBMht04Ehz5NjikW2a  ...                          NaN
+2022-04-14 11:22:02.119493120  ComT0h2HNjgoxTumVl  ...                          NaN
+
+[5 rows x 20 columns]
+2022-04-19 23:12:04.105 | INFO     | __main__:extract_log:32 - uid                   object
+id.orig_h             object
+id.orig_p              int64
+id.resp_h             object
+id.resp_p              int64
+trans_depth            int64
+method                object
+host                  object
+uri                   object
+version              float64
+request_body_len       int64
+response_body_len      int64
+status_code          float64
+status_msg            object
+tags                  object
+user_agent            object
+orig_fuids            object
+orig_mime_types       object
+resp_fuids            object
+resp_mime_types       object
+dtype: object
+2022-04-19 23:12:04.109 | INFO     | __main__:extract_log:35 - DF Shape: (39, 20)
+2022-04-19 23:12:04.110 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:04.117 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:04.118 | INFO     | __main__:extract_log:40 - 	 uid: 	0.00 MB
+2022-04-19 23:12:04.118 | INFO     | __main__:extract_log:40 - 	 id.orig_h: 	0.00 MB
+2022-04-19 23:12:04.119 | INFO     | __main__:extract_log:40 - 	 id.orig_p: 	0.00 MB
+2022-04-19 23:12:04.120 | INFO     | __main__:extract_log:40 - 	 id.resp_h: 	0.00 MB
+2022-04-19 23:12:04.120 | INFO     | __main__:extract_log:40 - 	 id.resp_p: 	0.00 MB
+2022-04-19 23:12:04.121 | INFO     | __main__:extract_log:40 - 	 trans_depth: 	0.00 MB
+2022-04-19 23:12:04.121 | INFO     | __main__:extract_log:40 - 	 method: 	0.00 MB
+2022-04-19 23:12:04.122 | INFO     | __main__:extract_log:40 - 	 host: 	0.00 MB
+2022-04-19 23:12:04.122 | INFO     | __main__:extract_log:40 - 	 uri: 	0.00 MB
+2022-04-19 23:12:04.123 | INFO     | __main__:extract_log:40 - 	 version: 	0.00 MB
+2022-04-19 23:12:04.123 | INFO     | __main__:extract_log:40 - 	 request_body_len: 	0.00 MB
+2022-04-19 23:12:04.124 | INFO     | __main__:extract_log:40 - 	 response_body_len: 	0.00 MB
+2022-04-19 23:12:04.124 | INFO     | __main__:extract_log:40 - 	 status_code: 	0.00 MB
+2022-04-19 23:12:04.125 | INFO     | __main__:extract_log:40 - 	 status_msg: 	0.00 MB
+2022-04-19 23:12:04.125 | INFO     | __main__:extract_log:40 - 	 tags: 	0.00 MB
+2022-04-19 23:12:04.126 | INFO     | __main__:extract_log:40 - 	 user_agent: 	0.00 MB
+2022-04-19 23:12:04.126 | INFO     | __main__:extract_log:40 - 	 orig_fuids: 	0.00 MB
+2022-04-19 23:12:04.127 | INFO     | __main__:extract_log:40 - 	 orig_mime_types: 	0.00 MB
+2022-04-19 23:12:04.128 | INFO     | __main__:extract_log:40 - 	 resp_fuids: 	0.00 MB
+2022-04-19 23:12:04.128 | INFO     | __main__:extract_log:40 - 	 resp_mime_types: 	0.00 MB
+2022-04-19 23:12:04.129 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:04.271 | INFO     | __main__:<module>:95 - stats_topic
+2022-04-19 23:12:04.328 | INFO     | __main__:extract_log:30 -                                peer  ...  reassem_unknown_size
+ts                                   ...                      
+2022-04-14 11:10:32.081469952  zeek  ...                     0
+2022-04-14 11:15:32.082119936  zeek  ...                     0
+2022-04-14 11:20:32.082611968  zeek  ...                     0
+2022-04-14 11:25:32.083069184  zeek  ...                     0
+2022-04-14 11:30:32.083433984  zeek  ...                     0
+
+[5 rows x 25 columns]
+2022-04-19 23:12:04.429 | INFO     | __main__:extract_log:32 - peer                     object
+mem                       int64
+pkts_proc                 int64
+bytes_recv                int64
+pkts_dropped              int64
+pkts_link                 int64
+pkt_lag                 float64
+events_proc               int64
+events_queued             int64
+active_tcp_conns          int64
+active_udp_conns          int64
+active_icmp_conns         int64
+tcp_conns                 int64
+udp_conns                 int64
+icmp_conns                int64
+timers                    int64
+active_timers             int64
+files                     int64
+active_files              int64
+dns_requests              int64
+active_dns_requests       int64
+reassem_tcp_size          int64
+reassem_file_size         int64
+reassem_frag_size         int64
+reassem_unknown_size      int64
+dtype: object
+2022-04-19 23:12:04.433 | INFO     | __main__:extract_log:35 - DF Shape: (30, 25)
+2022-04-19 23:12:04.434 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:04.442 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:04.444 | INFO     | __main__:extract_log:40 - 	 peer: 	0.00 MB
+2022-04-19 23:12:04.445 | INFO     | __main__:extract_log:40 - 	 mem: 	0.00 MB
+2022-04-19 23:12:04.446 | INFO     | __main__:extract_log:40 - 	 pkts_proc: 	0.00 MB
+2022-04-19 23:12:04.447 | INFO     | __main__:extract_log:40 - 	 bytes_recv: 	0.00 MB
+2022-04-19 23:12:04.448 | INFO     | __main__:extract_log:40 - 	 pkts_dropped: 	0.00 MB
+2022-04-19 23:12:04.450 | INFO     | __main__:extract_log:40 - 	 pkts_link: 	0.00 MB
+2022-04-19 23:12:04.450 | INFO     | __main__:extract_log:40 - 	 pkt_lag: 	0.00 MB
+2022-04-19 23:12:04.451 | INFO     | __main__:extract_log:40 - 	 events_proc: 	0.00 MB
+2022-04-19 23:12:04.452 | INFO     | __main__:extract_log:40 - 	 events_queued: 	0.00 MB
+2022-04-19 23:12:04.452 | INFO     | __main__:extract_log:40 - 	 active_tcp_conns: 	0.00 MB
+2022-04-19 23:12:04.453 | INFO     | __main__:extract_log:40 - 	 active_udp_conns: 	0.00 MB
+2022-04-19 23:12:04.454 | INFO     | __main__:extract_log:40 - 	 active_icmp_conns: 	0.00 MB
+2022-04-19 23:12:04.454 | INFO     | __main__:extract_log:40 - 	 tcp_conns: 	0.00 MB
+2022-04-19 23:12:04.455 | INFO     | __main__:extract_log:40 - 	 udp_conns: 	0.00 MB
+2022-04-19 23:12:04.455 | INFO     | __main__:extract_log:40 - 	 icmp_conns: 	0.00 MB
+2022-04-19 23:12:04.456 | INFO     | __main__:extract_log:40 - 	 timers: 	0.00 MB
+2022-04-19 23:12:04.457 | INFO     | __main__:extract_log:40 - 	 active_timers: 	0.00 MB
+2022-04-19 23:12:04.457 | INFO     | __main__:extract_log:40 - 	 files: 	0.00 MB
+2022-04-19 23:12:04.458 | INFO     | __main__:extract_log:40 - 	 active_files: 	0.00 MB
+2022-04-19 23:12:04.459 | INFO     | __main__:extract_log:40 - 	 dns_requests: 	0.00 MB
+2022-04-19 23:12:04.460 | INFO     | __main__:extract_log:40 - 	 active_dns_requests: 	0.00 MB
+2022-04-19 23:12:04.460 | INFO     | __main__:extract_log:40 - 	 reassem_tcp_size: 	0.00 MB
+2022-04-19 23:12:04.461 | INFO     | __main__:extract_log:40 - 	 reassem_file_size: 	0.00 MB
+2022-04-19 23:12:04.461 | INFO     | __main__:extract_log:40 - 	 reassem_frag_size: 	0.00 MB
+2022-04-19 23:12:04.462 | INFO     | __main__:extract_log:40 - 	 reassem_unknown_size: 	0.00 MB
+2022-04-19 23:12:04.463 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:04.625 | INFO     | __main__:<module>:95 - known_services_topic
+2022-04-19 23:12:04.687 | INFO     | __main__:extract_log:30 -                                         host  port_num port_proto service
+ts                                                                       
+2022-04-14 11:59:14.509916160  192.168.0.100        22        tcp   [SSH]
+2022-04-14 12:20:47.760124928  192.168.0.100      9092        tcp      []
+2022-04-14 13:05:41.697298176  192.168.0.100      3888        tcp      []
+2022-04-14 13:29:37.521138944  192.168.0.133      9092        tcp      []
+2022-04-14 13:30:46.550816000  192.168.0.133      2888        tcp      []
+2022-04-19 23:12:04.715 | INFO     | __main__:extract_log:32 - host          object
+port_num       int64
+port_proto    object
+service       object
+dtype: object
+2022-04-19 23:12:04.717 | INFO     | __main__:extract_log:35 - DF Shape: (12, 4)
+2022-04-19 23:12:04.718 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:04.723 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:04.724 | INFO     | __main__:extract_log:40 - 	 host: 	0.00 MB
+2022-04-19 23:12:04.725 | INFO     | __main__:extract_log:40 - 	 port_num: 	0.00 MB
+2022-04-19 23:12:04.726 | INFO     | __main__:extract_log:40 - 	 port_proto: 	0.00 MB
+2022-04-19 23:12:04.726 | INFO     | __main__:extract_log:40 - 	 service: 	0.00 MB
+2022-04-19 23:12:04.727 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:04.851 | INFO     | __main__:<module>:95 - known_hosts_topic
+2022-04-19 23:12:04.885 | INFO     | __main__:extract_log:30 -                                         host
+ts                                          
+2022-04-14 11:10:51.375673088  192.168.0.100
+2022-04-14 11:59:14.447980032  192.168.0.133
+2022-04-19 23:12:04.899 | INFO     | __main__:extract_log:32 - host    object
+dtype: object
+2022-04-19 23:12:04.901 | INFO     | __main__:extract_log:35 - DF Shape: (2, 1)
+2022-04-19 23:12:04.902 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:04.907 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:04.911 | INFO     | __main__:extract_log:40 - 	 host: 	0.00 MB
+2022-04-19 23:12:04.912 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:05.072 | INFO     | __main__:<module>:95 - packet_filter_topic
+2022-04-19 23:12:05.106 | INFO     | __main__:extract_log:30 -                                node filter  init  success
+ts                                                       
+2022-04-14 11:10:32.070477056  zeek    tcp  True     True
+2022-04-19 23:12:05.138 | INFO     | __main__:extract_log:32 - node       object
+filter     object
+init         bool
+success      bool
+dtype: object
+2022-04-19 23:12:05.141 | INFO     | __main__:extract_log:35 - DF Shape: (1, 4)
+2022-04-19 23:12:05.142 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:05.147 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:05.148 | INFO     | __main__:extract_log:40 - 	 node: 	0.00 MB
+2022-04-19 23:12:05.149 | INFO     | __main__:extract_log:40 - 	 filter: 	0.00 MB
+2022-04-19 23:12:05.150 | INFO     | __main__:extract_log:40 - 	 init: 	0.00 MB
+2022-04-19 23:12:05.151 | INFO     | __main__:extract_log:40 - 	 success: 	0.00 MB
+2022-04-19 23:12:05.152 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:05.301 | INFO     | __main__:<module>:95 - ssl_topic
+2022-04-19 23:12:05.360 | INFO     | __main__:extract_log:30 -                                               uid  ... validation_status
+ts                                                 ...                  
+2022-04-14 11:10:51.377501952  CkxRBI3if0sDexohth  ...               NaN
+2022-04-14 11:10:51.392644864  CcE2xQ3yiLYTFJJfci  ...               NaN
+2022-04-14 11:14:26.554006016  CpfUQH3Ov3bWcGjZXi  ...               NaN
+2022-04-14 11:19:26.852281088  CQWri62jWS03daTXii  ...               NaN
+2022-04-14 11:20:54.265494016  CUOqnO1weA08B7ZJ61  ...               NaN
+
+[5 rows x 19 columns]
+2022-04-19 23:12:05.443 | INFO     | __main__:extract_log:32 - uid                        object
+id.orig_h                  object
+id.orig_p                   int64
+id.resp_h                  object
+id.resp_p                   int64
+server_name                object
+resumed                      bool
+established                  bool
+ja3                        object
+version                    object
+cipher                     object
+curve                      object
+ja3s                       object
+next_protocol              object
+cert_chain_fuids           object
+client_cert_chain_fuids    object
+subject                    object
+issuer                     object
+validation_status          object
+dtype: object
+2022-04-19 23:12:05.447 | INFO     | __main__:extract_log:35 - DF Shape: (19, 19)
+2022-04-19 23:12:05.447 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:05.454 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:05.454 | INFO     | __main__:extract_log:40 - 	 uid: 	0.00 MB
+2022-04-19 23:12:05.455 | INFO     | __main__:extract_log:40 - 	 id.orig_h: 	0.00 MB
+2022-04-19 23:12:05.456 | INFO     | __main__:extract_log:40 - 	 id.orig_p: 	0.00 MB
+2022-04-19 23:12:05.456 | INFO     | __main__:extract_log:40 - 	 id.resp_h: 	0.00 MB
+2022-04-19 23:12:05.457 | INFO     | __main__:extract_log:40 - 	 id.resp_p: 	0.00 MB
+2022-04-19 23:12:05.457 | INFO     | __main__:extract_log:40 - 	 server_name: 	0.00 MB
+2022-04-19 23:12:05.458 | INFO     | __main__:extract_log:40 - 	 resumed: 	0.00 MB
+2022-04-19 23:12:05.458 | INFO     | __main__:extract_log:40 - 	 established: 	0.00 MB
+2022-04-19 23:12:05.459 | INFO     | __main__:extract_log:40 - 	 ja3: 	0.00 MB
+2022-04-19 23:12:05.459 | INFO     | __main__:extract_log:40 - 	 version: 	0.00 MB
+2022-04-19 23:12:05.460 | INFO     | __main__:extract_log:40 - 	 cipher: 	0.00 MB
+2022-04-19 23:12:05.460 | INFO     | __main__:extract_log:40 - 	 curve: 	0.00 MB
+2022-04-19 23:12:05.461 | INFO     | __main__:extract_log:40 - 	 ja3s: 	0.00 MB
+2022-04-19 23:12:05.462 | INFO     | __main__:extract_log:40 - 	 next_protocol: 	0.00 MB
+2022-04-19 23:12:05.463 | INFO     | __main__:extract_log:40 - 	 cert_chain_fuids: 	0.00 MB
+2022-04-19 23:12:05.463 | INFO     | __main__:extract_log:40 - 	 client_cert_chain_fuids: 	0.00 MB
+2022-04-19 23:12:05.464 | INFO     | __main__:extract_log:40 - 	 subject: 	0.00 MB
+2022-04-19 23:12:05.465 | INFO     | __main__:extract_log:40 - 	 issuer: 	0.00 MB
+2022-04-19 23:12:05.466 | INFO     | __main__:extract_log:40 - 	 validation_status: 	0.00 MB
+2022-04-19 23:12:05.466 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:05.605 | INFO     | __main__:<module>:95 - software_topic
+2022-04-19 23:12:05.652 | INFO     | __main__:extract_log:30 -                                         host  ... host_p
+ts                                            ...       
+2022-04-14 11:14:26.822987008  192.168.0.100  ...    NaN
+2022-04-14 11:59:14.448260096  192.168.0.133  ...    NaN
+2022-04-14 11:59:14.485240064  192.168.0.100  ...   22.0
+
+[3 rows x 9 columns]
+2022-04-19 23:12:05.695 | INFO     | __main__:extract_log:32 - host                 object
+software_type        object
+name                 object
+version.major         int64
+version.minor         int64
+version.minor2      float64
+unparsed_version     object
+version.addl         object
+host_p              float64
+dtype: object
+2022-04-19 23:12:05.698 | INFO     | __main__:extract_log:35 - DF Shape: (3, 9)
+2022-04-19 23:12:05.699 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:05.704 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:05.705 | INFO     | __main__:extract_log:40 - 	 host: 	0.00 MB
+2022-04-19 23:12:05.705 | INFO     | __main__:extract_log:40 - 	 software_type: 	0.00 MB
+2022-04-19 23:12:05.706 | INFO     | __main__:extract_log:40 - 	 name: 	0.00 MB
+2022-04-19 23:12:05.706 | INFO     | __main__:extract_log:40 - 	 version.major: 	0.00 MB
+2022-04-19 23:12:05.707 | INFO     | __main__:extract_log:40 - 	 version.minor: 	0.00 MB
+2022-04-19 23:12:05.708 | INFO     | __main__:extract_log:40 - 	 version.minor2: 	0.00 MB
+2022-04-19 23:12:05.708 | INFO     | __main__:extract_log:40 - 	 unparsed_version: 	0.00 MB
+2022-04-19 23:12:05.709 | INFO     | __main__:extract_log:40 - 	 version.addl: 	0.00 MB
+2022-04-19 23:12:05.710 | INFO     | __main__:extract_log:40 - 	 host_p: 	0.00 MB
+2022-04-19 23:12:05.711 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:05.846 | INFO     | __main__:<module>:95 - ssh_topic
+2022-04-19 23:12:05.892 | INFO     | __main__:extract_log:30 -                                               uid  ...                                         host_key
+ts                                                 ...                                                 
+2022-04-14 11:59:14.448260096   C4WWgNGUS7yWmGsIh  ...  1f:a5:52:f4:e0:79:42:7c:6e:58:51:dd:a5:9f:ca:0d
+2022-04-14 12:05:38.324531200  CXqYYs4gjNhq89ES4g  ...  1f:a5:52:f4:e0:79:42:7c:6e:58:51:dd:a5:9f:ca:0d
+2022-04-14 12:05:46.698482944   CGtLwW4J0bj6Jx63a  ...  1f:a5:52:f4:e0:79:42:7c:6e:58:51:dd:a5:9f:ca:0d
+2022-04-14 12:07:42.791086848  C6GWYH3WuTfFiFkB92  ...  1f:a5:52:f4:e0:79:42:7c:6e:58:51:dd:a5:9f:ca:0d
+2022-04-14 13:30:31.187488000  CS3Sux2yo5Yw1LLI1d  ...  1f:a5:52:f4:e0:79:42:7c:6e:58:51:dd:a5:9f:ca:0d
+
+[5 rows x 16 columns]
+2022-04-19 23:12:05.970 | INFO     | __main__:extract_log:32 - uid                object
+id.orig_h          object
+id.orig_p           int64
+id.resp_h          object
+id.resp_p           int64
+version             int64
+auth_success         bool
+auth_attempts       int64
+client             object
+server             object
+cipher_alg         object
+mac_alg            object
+compression_alg    object
+kex_alg            object
+host_key_alg       object
+host_key           object
+dtype: object
+2022-04-19 23:12:05.973 | INFO     | __main__:extract_log:35 - DF Shape: (6, 16)
+2022-04-19 23:12:05.974 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:05.980 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:05.981 | INFO     | __main__:extract_log:40 - 	 uid: 	0.00 MB
+2022-04-19 23:12:05.981 | INFO     | __main__:extract_log:40 - 	 id.orig_h: 	0.00 MB
+2022-04-19 23:12:05.982 | INFO     | __main__:extract_log:40 - 	 id.orig_p: 	0.00 MB
+2022-04-19 23:12:05.983 | INFO     | __main__:extract_log:40 - 	 id.resp_h: 	0.00 MB
+2022-04-19 23:12:05.983 | INFO     | __main__:extract_log:40 - 	 id.resp_p: 	0.00 MB
+2022-04-19 23:12:05.984 | INFO     | __main__:extract_log:40 - 	 version: 	0.00 MB
+2022-04-19 23:12:05.984 | INFO     | __main__:extract_log:40 - 	 auth_success: 	0.00 MB
+2022-04-19 23:12:05.985 | INFO     | __main__:extract_log:40 - 	 auth_attempts: 	0.00 MB
+2022-04-19 23:12:05.985 | INFO     | __main__:extract_log:40 - 	 client: 	0.00 MB
+2022-04-19 23:12:05.986 | INFO     | __main__:extract_log:40 - 	 server: 	0.00 MB
+2022-04-19 23:12:05.986 | INFO     | __main__:extract_log:40 - 	 cipher_alg: 	0.00 MB
+2022-04-19 23:12:05.987 | INFO     | __main__:extract_log:40 - 	 mac_alg: 	0.00 MB
+2022-04-19 23:12:05.987 | INFO     | __main__:extract_log:40 - 	 compression_alg: 	0.00 MB
+2022-04-19 23:12:05.988 | INFO     | __main__:extract_log:40 - 	 kex_alg: 	0.00 MB
+2022-04-19 23:12:05.988 | INFO     | __main__:extract_log:40 - 	 host_key_alg: 	0.00 MB
+2022-04-19 23:12:05.989 | INFO     | __main__:extract_log:40 - 	 host_key: 	0.00 MB
+2022-04-19 23:12:05.990 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:06.128 | INFO     | __main__:<module>:95 - files_topic
+2022-04-19 23:12:06.185 | INFO     | __main__:extract_log:30 -                                              fuid  ...                                             sha256
+ts                                                 ...                                                   
+2022-04-14 11:14:26.822987008  FdZbX826keqzvRZ8vd  ...                                                NaN
+2022-04-14 11:14:26.903944960  Fy7OrL3B55ICsrWUJg  ...                                                NaN
+2022-04-14 12:13:56.063949056   FyXmvmDVo32v7jGL1  ...  ebd5dd0efb9b0673026408345353c10c9bd9b7e70148fa...
+2022-04-14 12:13:56.063949056   Fu7Uq90cdoA97iOl3  ...  74ef335e5e18788307fb9d89cb704bec112abd23487dbf...
+2022-04-14 12:13:56.095213056  FloShR1fdXjFXnwud9  ...  ebd5dd0efb9b0673026408345353c10c9bd9b7e70148fa...
+
+[5 rows x 19 columns]
+2022-04-19 23:12:06.274 | INFO     | __main__:extract_log:32 - fuid               object
+tx_hosts           object
+rx_hosts           object
+conn_uids          object
+source             object
+depth               int64
+analyzers          object
+mime_type          object
+duration            int64
+local_orig           bool
+is_orig              bool
+seen_bytes          int64
+total_bytes       float64
+missing_bytes       int64
+overflow_bytes      int64
+timedout             bool
+md5                object
+sha1               object
+sha256             object
+dtype: object
+2022-04-19 23:12:06.278 | INFO     | __main__:extract_log:35 - DF Shape: (6, 19)
+2022-04-19 23:12:06.279 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:06.285 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:06.286 | INFO     | __main__:extract_log:40 - 	 fuid: 	0.00 MB
+2022-04-19 23:12:06.286 | INFO     | __main__:extract_log:40 - 	 tx_hosts: 	0.00 MB
+2022-04-19 23:12:06.287 | INFO     | __main__:extract_log:40 - 	 rx_hosts: 	0.00 MB
+2022-04-19 23:12:06.287 | INFO     | __main__:extract_log:40 - 	 conn_uids: 	0.00 MB
+2022-04-19 23:12:06.288 | INFO     | __main__:extract_log:40 - 	 source: 	0.00 MB
+2022-04-19 23:12:06.289 | INFO     | __main__:extract_log:40 - 	 depth: 	0.00 MB
+2022-04-19 23:12:06.289 | INFO     | __main__:extract_log:40 - 	 analyzers: 	0.00 MB
+2022-04-19 23:12:06.290 | INFO     | __main__:extract_log:40 - 	 mime_type: 	0.00 MB
+2022-04-19 23:12:06.290 | INFO     | __main__:extract_log:40 - 	 duration: 	0.00 MB
+2022-04-19 23:12:06.291 | INFO     | __main__:extract_log:40 - 	 local_orig: 	0.00 MB
+2022-04-19 23:12:06.292 | INFO     | __main__:extract_log:40 - 	 is_orig: 	0.00 MB
+2022-04-19 23:12:06.292 | INFO     | __main__:extract_log:40 - 	 seen_bytes: 	0.00 MB
+2022-04-19 23:12:06.293 | INFO     | __main__:extract_log:40 - 	 total_bytes: 	0.00 MB
+2022-04-19 23:12:06.293 | INFO     | __main__:extract_log:40 - 	 missing_bytes: 	0.00 MB
+2022-04-19 23:12:06.294 | INFO     | __main__:extract_log:40 - 	 overflow_bytes: 	0.00 MB
+2022-04-19 23:12:06.295 | INFO     | __main__:extract_log:40 - 	 timedout: 	0.00 MB
+2022-04-19 23:12:06.297 | INFO     | __main__:extract_log:40 - 	 md5: 	0.00 MB
+2022-04-19 23:12:06.298 | INFO     | __main__:extract_log:40 - 	 sha1: 	0.00 MB
+2022-04-19 23:12:06.299 | INFO     | __main__:extract_log:40 - 	 sha256: 	0.00 MB
+2022-04-19 23:12:06.299 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:06.426 | INFO     | __main__:<module>:95 - reporter_topic
+2022-04-19 23:12:06.467 | INFO     | __main__:extract_log:30 -                                         level  ...          location
+ts                                             ...                  
+2022-04-14 13:31:14.811805952  Reporter::INFO  ...  <params>, line 1
+2022-04-14 13:31:14.811805952  Reporter::INFO  ...  <params>, line 1
+
+[2 rows x 3 columns]
+2022-04-19 23:12:06.490 | INFO     | __main__:extract_log:32 - level       object
+message     object
+location    object
+dtype: object
+2022-04-19 23:12:06.492 | INFO     | __main__:extract_log:35 - DF Shape: (2, 3)
+2022-04-19 23:12:06.493 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:06.496 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:06.497 | INFO     | __main__:extract_log:40 - 	 level: 	0.00 MB
+2022-04-19 23:12:06.498 | INFO     | __main__:extract_log:40 - 	 message: 	0.00 MB
+2022-04-19 23:12:06.499 | INFO     | __main__:extract_log:40 - 	 location: 	0.00 MB
+2022-04-19 23:12:06.500 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:06.659 | INFO     | __main__:<module>:95 - capture_loss_topic
+2022-04-19 23:12:06.695 | INFO     | __main__:extract_log:30 -                                  ts_delta  peer  gaps  acks  percent_lost
+ts                                                                       
+2022-04-14 11:11:32.081561088   60.000091  zeek     0     0             0
+2022-04-14 11:26:32.081846016  900.000285  zeek     0    38             0
+2022-04-14 11:41:32.081911040  900.000065  zeek     0    62             0
+2022-04-14 11:56:32.082568960  900.000658  zeek     0   218             0
+2022-04-14 12:11:32.082674944  900.000106  zeek     0  1299             0
+2022-04-19 23:12:06.727 | INFO     | __main__:extract_log:32 - ts_delta        float64
+peer             object
+gaps              int64
+acks              int64
+percent_lost      int64
+dtype: object
+2022-04-19 23:12:06.730 | INFO     | __main__:extract_log:35 - DF Shape: (11, 5)
+2022-04-19 23:12:06.731 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:06.736 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:06.736 | INFO     | __main__:extract_log:40 - 	 ts_delta: 	0.00 MB
+2022-04-19 23:12:06.737 | INFO     | __main__:extract_log:40 - 	 peer: 	0.00 MB
+2022-04-19 23:12:06.738 | INFO     | __main__:extract_log:40 - 	 gaps: 	0.00 MB
+2022-04-19 23:12:06.738 | INFO     | __main__:extract_log:40 - 	 acks: 	0.00 MB
+2022-04-19 23:12:06.739 | INFO     | __main__:extract_log:40 - 	 percent_lost: 	0.00 MB
+2022-04-19 23:12:06.739 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:06.894 | INFO     | __main__:<module>:95 - notice_topic
+2022-04-19 23:12:06.941 | INFO     | __main__:extract_log:30 -                                                           note  ... suppress_for
+ts                                                              ...             
+2022-04-14 11:11:32.081561088  CaptureLoss::Too_Little_Traffic  ...         3600
+
+[1 rows x 4 columns]
+2022-04-19 23:12:06.972 | INFO     | __main__:extract_log:32 - note            object
+msg             object
+actions         object
+suppress_for     int64
+dtype: object
+2022-04-19 23:12:06.974 | INFO     | __main__:extract_log:35 - DF Shape: (1, 4)
+2022-04-19 23:12:06.975 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:06.979 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:06.980 | INFO     | __main__:extract_log:40 - 	 note: 	0.00 MB
+2022-04-19 23:12:06.982 | INFO     | __main__:extract_log:40 - 	 msg: 	0.00 MB
+2022-04-19 23:12:06.982 | INFO     | __main__:extract_log:40 - 	 actions: 	0.00 MB
+2022-04-19 23:12:06.983 | INFO     | __main__:extract_log:40 - 	 suppress_for: 	0.00 MB
+2022-04-19 23:12:06.983 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-19 23:12:07.119 | INFO     | __main__:<module>:95 - loaded_scripts_topic
+2022-04-19 23:12:07.144 | INFO     | __main__:extract_log:30 -                                                 name
+0     /usr/local/zeek/share/zeek/base/init-bare.zeek
+1    /usr/local/zeek/share/zeek/base/bif/const.bi...
+2    /usr/local/zeek/share/zeek/base/bif/types.bi...
+3    /usr/local/zeek/share/zeek/base/bif/zeek.bif...
+4    /usr/local/zeek/share/zeek/base/bif/stats.bi...
+2022-04-19 23:12:07.156 | INFO     | __main__:extract_log:32 - name    object
+dtype: object
+2022-04-19 23:12:07.160 | INFO     | __main__:extract_log:35 - DF Shape: (441, 1)
+2022-04-19 23:12:07.160 | INFO     | __main__:extract_log:36 - DF Memory:
+2022-04-19 23:12:07.164 | INFO     | __main__:extract_log:40 - 	 Index: 	0.00 MB
+2022-04-19 23:12:07.164 | INFO     | __main__:extract_log:40 - 	 name: 	0.06 MB
+2022-04-19 23:12:07.165 | INFO     | __main__:extract_log:41 - DF Total: 0.00 GB
+2022-04-20 09:15:26.712 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-20 09:15:32.518 | INFO     | __main__:<module>:95 - conn_topic
+2022-04-20 09:15:32.526 | INFO     | __main__:<module>:95 - x509_topic
+2022-04-20 09:15:32.529 | INFO     | __main__:<module>:95 - http_topic
+2022-04-20 09:15:32.530 | INFO     | __main__:<module>:95 - stats_topic
+2022-04-20 09:15:32.532 | INFO     | __main__:<module>:95 - known_services_topic
+2022-04-20 09:15:32.533 | INFO     | __main__:<module>:95 - known_hosts_topic
+2022-04-20 09:15:32.537 | INFO     | __main__:<module>:95 - packet_filter_topic
+2022-04-20 09:15:32.540 | INFO     | __main__:<module>:95 - ssl_topic
+2022-04-20 09:15:32.543 | INFO     | __main__:<module>:95 - software_topic
+2022-04-20 09:15:32.546 | INFO     | __main__:<module>:95 - ssh_topic
+2022-04-20 09:15:32.548 | INFO     | __main__:<module>:95 - files_topic
+2022-04-20 09:15:32.551 | INFO     | __main__:<module>:95 - reporter_topic
+2022-04-20 09:15:32.553 | INFO     | __main__:<module>:95 - capture_loss_topic
+2022-04-20 09:15:32.557 | INFO     | __main__:<module>:95 - notice_topic
+2022-04-20 09:15:32.558 | INFO     | __main__:<module>:95 - loaded_scripts_topic
+2022-04-20 09:17:55.571 | DEBUG    | __main__:<module>:78 - This's a log message in file
+2022-04-20 09:18:01.708 | INFO     | __main__:<module>:95 - conn_topic
+2022-04-20 09:18:01.710 | INFO     | __main__:<module>:95 - x509_topic
+2022-04-20 09:18:01.717 | INFO     | __main__:<module>:95 - http_topic
+2022-04-20 09:18:01.719 | INFO     | __main__:<module>:95 - stats_topic
+2022-04-20 09:18:01.720 | INFO     | __main__:<module>:95 - known_services_topic
+2022-04-20 09:18:01.721 | INFO     | __main__:<module>:95 - known_hosts_topic
+2022-04-20 09:18:01.722 | INFO     | __main__:<module>:95 - packet_filter_topic
+2022-04-20 09:18:01.723 | INFO     | __main__:<module>:95 - ssl_topic
+2022-04-20 09:18:01.724 | INFO     | __main__:<module>:95 - software_topic
+2022-04-20 09:18:01.724 | INFO     | __main__:<module>:95 - ssh_topic
+2022-04-20 09:18:01.725 | INFO     | __main__:<module>:95 - files_topic
+2022-04-20 09:18:01.726 | INFO     | __main__:<module>:95 - reporter_topic
+2022-04-20 09:18:01.727 | INFO     | __main__:<module>:95 - capture_loss_topic
+2022-04-20 09:18:01.727 | INFO     | __main__:<module>:95 - notice_topic
+2022-04-20 09:18:01.728 | INFO     | __main__:<module>:95 - loaded_scripts_topic

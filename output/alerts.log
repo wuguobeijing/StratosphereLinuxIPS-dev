@@ -1,0 +1,8 @@
+Using master - 5015990188f21176224e093976f80311524efe4e - 2022-04-14 19:10:30.689430
+
+2022-04-14T19:10:43.261619+08:00: Src IP 192.168.0.100             . Detected horizontal port scan to port 443/TCP. From 192.168.0.100 to 6 unique dst IPs. Tot pkts: 2733. Threat Level: medium. Confidence: 1
+2022-04-14T19:10:43.261619+08:00: Src IP 192.168.0.100             . Blocked given enough evidence on timewindow 1. (real time 2022/04/14 19:19:26)
+2022-04-14T20:11:02.073912+08:00: Src IP 192.168.0.100             . Detected horizontal port scan to port 443/TCP. From 192.168.0.100 to 6 unique dst IPs. Tot pkts: 0. Threat Level: medium. Confidence: 0.0
+2022-04-14T20:15:59.033915+08:00: Src IP 192.168.0.100             . Detected horizontal port scan to port 443/TCP. From 192.168.0.100 to 6 unique dst IPs. Tot pkts: 0. Threat Level: medium. Confidence: 0.0
+2022-04-14T20:21:06.233613+08:00: Src IP 192.168.0.100             . Detected horizontal port scan to port 443/TCP. From 192.168.0.100 to 6 unique dst IPs. Tot pkts: 0. Threat Level: medium. Confidence: 0.0
+2022-04-14T20:26:03.193971+08:00: Src IP 192.168.0.100             . Detected horizontal port scan to port 443/TCP. From 192.168.0.100 to 6 unique dst IPs. Tot pkts: 0. Threat Level: medium. Confidence: 0.0

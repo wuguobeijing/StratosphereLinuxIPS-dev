@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "async": "^3.2.3",
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "chalk": "^4.1.2",
+    "clipboardy": "^3.0.0",
+    "fs": "^0.0.1-security",
+    "redis": "^3.1.2",
+    "sorted-array-async": "^0.0.7",
+    "strip-ansi": "^6.0.0",
+    "yargs": "^17.4.1"
+  }
+}

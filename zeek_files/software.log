@@ -1,0 +1,3 @@
+{"ts":1649934866.822987,"host":"192.168.0.100","software_type":"HTTP::BROWSER","name":"Thunderbird","version.major":91,"version.minor":7,"version.minor2":0,"unparsed_version":"Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Thunderbird/91.7.0"}
+{"ts":1649937554.44826,"host":"192.168.0.133","software_type":"SSH::CLIENT","name":"OpenSSH","version.major":7,"version.minor":6,"version.addl":"p1","unparsed_version":"OpenSSH_7.6p1 Ubuntu-4ubuntu0.6"}
+{"ts":1649937554.48524,"host":"192.168.0.100","host_p":22,"software_type":"SSH::SERVER","name":"OpenSSH","version.major":8,"version.minor":2,"version.addl":"p1","unparsed_version":"OpenSSH_8.2p1 Ubuntu-4ubuntu0.4"}
