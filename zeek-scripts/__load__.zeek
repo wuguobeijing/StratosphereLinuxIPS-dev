@@ -1,4 +1,4 @@
-@load ./slips-conf.zeek
+@load ./slips-conf-tsv-format.zeek
 @load ./ja3.zeek
 @load ./ja3s.zeek
 @load ./arp.zeek

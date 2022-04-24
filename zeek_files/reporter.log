@@ -1,2 +1,0 @@
-{"ts":1649943074.811806,"level":"Reporter::INFO","message":"received termination signal","location":"<params>, line 1"}
-{"ts":1649943074.811806,"level":"Reporter::INFO","message":"24351 packets received on interface eth0, 0 (0.00%) dropped","location":"<params>, line 1"}

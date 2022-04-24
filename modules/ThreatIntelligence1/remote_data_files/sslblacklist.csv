@@ -1,12 +1,25 @@
 ################################################################
 # abuse.ch SSLBL SSL Certificate Blacklist (SHA1 Fingerprints) #
-# Last updated: 2022-04-09 16:10:05 UTC                        #
+# Last updated: 2022-04-22 16:10:59 UTC                        #
 #                                                              #
 # Terms Of Use: https://sslbl.abuse.ch/blacklist/              #
 # For questions please contact sslbl [at] abuse.ch             #
 ################################################################
 #
 # Listingdate,SHA1,Listingreason
+2022-04-22 16:10:59,3b2db83c88073c59b010951ebe98140042a8c679,Matanbuchus C&C
+2022-04-22 15:32:11,90ed3519afb15b9de6a04646f0adf8fd7cad4bf6,OrcusRAT C&C
+2022-04-22 05:28:22,1c3f5b11b68ada7a4cf526452a7fcd69bbc9f5e2,AsyncRAT C&C
+2022-04-21 08:21:10,0d2bb0470fa5b8fc63667d03c9a0901d711e3a17,AsyncRAT C&C
+2022-04-21 08:20:59,9c151eb9a0dbbd17722074a748153d56bf64f723,QuasarRAT C&C
+2022-04-20 17:59:06,ca999c30d1d488a4c0f9cf50b28d4203d5beef0c,AsyncRAT C&C
+2022-04-20 17:39:27,3e187af7c1e6dac2434476839b57e412bcd3e679,Matanbuchus C&C
+2022-04-20 06:45:34,1bdc6317191e320b3c26e8f6320eab0c5dd26dc8,AsyncRAT C&C
+2022-04-20 06:45:18,47139bbc3c5274a9e4444367ae51ab2265f850ae,AsyncRAT C&C
+2022-04-19 06:38:39,a9be6c691a96792aa5c81a4c1740eace896094f1,AsyncRAT C&C
+2022-04-17 13:26:25,61a86157b2970b2eb09b7a0c3a2b8e433aac7cd8,DCRat C&C
+2022-04-16 06:07:13,dce0615a75e1a4db9da9222b1f968d9f02f75882,BitRAT C&C
+2022-04-16 06:06:56,a983734f00ca479c4e788df7b76e3d47ab1cdf28,AsyncRAT C&C
 2022-04-09 16:10:05,8cb06568b4cfb30b8b2504f6e5f7edff42042887,AsyncRAT C&C
 2022-04-08 08:54:04,40005ac5bc2478d6f588b3161bb3e25914a90f83,AsyncRAT C&C
 2022-04-08 08:53:42,bf8091e124227ccae72fcf08706e31d6642e61bb,AsyncRAT C&C
@@ -4753,4 +4766,4 @@
 2014-05-04 08:10:31,86d6aade4ba1414a91b1e7fb3cdd7d503692f410,Shylock C&C
 2014-05-04 08:10:26,5afc236d1dd00c9c45457b75226b501b815a59c7,Shylock C&C
 2014-05-04 08:09:56,b08a4939fb88f375a2757eaddc47b1fb8b554439,Shylock C&C
-# END (4746) entries
+# END (4759) entries
