@@ -103,7 +103,7 @@ def check_redis_database(redis_host='localhost', redis_port=6379) -> bool:
     Check if we have redis-server running
     """
     try:
-        r = redis.StrictRedis(host=redis_host, port=redis_port, db=0, charset="utf-8",
+        r = redis.StrictRedis(host=redis_host, port=redis_port, db=1, charset="utf-8",
                                    decode_responses=True)
         r.ping()
     except Exception as ex:
@@ -116,7 +116,7 @@ def clear_redis_cache_database(redis_host='localhost', redis_port=6379) -> bool:
     """
     Clear cache database
     """
-    rcache = redis.StrictRedis(host=redis_host, port=redis_port, db=1, charset="utf-8",
+    rcache = redis.StrictRedis(host=redis_host, port=redis_port, db=2, charset="utf-8",
                                decode_responses=True)
     rcache.flushdb()
     return True

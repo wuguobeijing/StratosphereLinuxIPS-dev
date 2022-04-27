@@ -97,7 +97,7 @@ class Database(object):
 
                 self.r = redis.StrictRedis(host='localhost',
                                            port=6379,
-                                           db=0,
+                                           db=1,
                                            charset="utf-8",
                                            socket_keepalive=True,
                                            retry_on_timeout=True,
@@ -106,7 +106,7 @@ class Database(object):
                 # db 1 is cache, delete it using -cc flag
                 self.rcache = redis.StrictRedis(host='localhost',
                                                 port=6379,
-                                                db=1,
+                                                db=2,
                                                 charset="utf-8",
                                                 socket_keepalive=True,
                                                 retry_on_timeout=True,

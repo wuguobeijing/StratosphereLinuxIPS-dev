@@ -59,6 +59,8 @@ def write_to_producer(producer, zeek_dataframe, topic):
     for item in msg_list:
         producer.send(topic, item).add_callback(on_send_success).add_errback(on_send_error)
 
+# TODO
+#   use for row in reader
 
 def try_df2json(log_file):
     zeek_df = extract_normal_log(log_file)
