@@ -705,7 +705,7 @@ if __name__ == '__main__':
 
         # Before starting update malicious file
         # create an event loop and allow it to run the update_file_manager asynchronously
-        asyncio.run(update_ti_files(outputProcessQueue, config))
+        # asyncio.run(update_ti_files(outputProcessQueue, config))
 
         # Print the PID of the main slips process. We do it here because we needed the queue to the output process
         outputProcessQueue.put('10|main|Started main program [PID {}]'.format(os.getpid()))

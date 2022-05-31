@@ -128,9 +128,9 @@ if __name__ == '__main__':
             admin_client.create_topics(new_topics=topic_list, validate_only=True)
         zeek_df = extract_normal_log('zeek_files/'+file)
         write_to_producer(producer, zeek_df, topic=topic)
-        f = open('zeek_files/'+file, 'w')
-        f.truncate()
-        f.close()
+        # f = open('zeek_files/'+file, 'w')
+        # f.truncate()
+        # f.close()
     producer.close()
 
     # # Example to populate a Pandas dataframe from a zeek log reader

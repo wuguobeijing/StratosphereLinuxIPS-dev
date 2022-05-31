@@ -4,6 +4,7 @@ import multiprocessing
 from slips_files.core.database import __database__
 from slips_files.common.slips_utils import utils
 import sys
+from loguru import logger
 import configparser
 import time
 from sklearn.linear_model import SGDClassifier
@@ -51,7 +52,22 @@ class Module(Module, multiprocessing.Process):
         # To plot the scores of training
         #self.scores = []
         # The scaler trained during training and to use during testing
-        self.scaler = StandardScaler()
+        # self.print(f'Reading the trained scaler from disk.', 0, 2)
+        if self.mode == 'test':
+            self.print(f'Reading the trained model from disk.', 1, 2)
+            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.bin',
+                      'rb') as f:
+                self.clf = pickle.load(f)
+                f.close()
+            self.print(f'Reading the trained scaler from disk.', 1, 2)
+            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/scaler.bin',
+                      'rb') as g:
+                self.scaler = pickle.load(g)
+                g.close()
+        else:
+            self.scaler = StandardScaler()
+            print('Error reading model from disk. Creating a new empty model.')
+            self.clf = SGDClassifier(warm_start=True, loss='hinge', penalty="l1")
 
     def read_configuration(self):
         """ Read the configuration file for what we need """
@@ -98,24 +114,27 @@ class Module(Module, multiprocessing.Process):
             X_flow = X_flow.drop('module_labels', axis=1)
 
             # Normalize this batch of data so far. This can get progressivle slow
+            self.scaler.fit(X_flow)
             X_flow = self.scaler.fit_transform(X_flow)
 
             # Train 
             try:
-                self.clf.partial_fit(X_flow, y_flow, classes=['Malware', 'Normal'])
+                # self.clf.partial_fit(X_flow, y_flow, classes=['Malware', 'Normal'])
+                self.clf.fit(X_flow, y_flow)
+                print(self.clf.coef_)
             except Exception as inst:
                 self.print('Error while calling clf.train()')
                 self.print(type(inst))
                 self.print(inst)
-
+            # self.clf.fit(X_flow, y_flow)
+            # print(self.clf.coef_)
             # See score so far in training
             score = self.clf.score(X_flow, y_flow)
 
             # To debug the training score
             #self.scores.append(score)
 
-            self.print(f'	Training Score: {score}', 0, 1)
-            #self.print(f'    Model Parameters: {self.clf.coef_}')
+            self.print(f'	Training Score: {score}', 1, 1)
 
             # Debug code to store a plot in a png of the scores
             #plt.plot(self.scores)
@@ -289,14 +308,17 @@ class Module(Module, multiprocessing.Process):
         """
         try:
             # Store the real label if there is one
-            y_flow = self.flow['label']
+            # y_flow = self.flow['label']
             # Drop the real label
             self.flow = self.flow.drop('label', axis=1)
             # Drop the label predictions of the other modules
             X_flow = self.flow.drop('module_labels', axis=1)
             # Scale the flow
+            # X_flow = self.scaler.fit_transform(X_flow)
             X_flow = self.scaler.transform(X_flow)
+            print('111'+'\n')
             pred = self.clf.predict(X_flow)
+            print('000'+'\n')
             return pred
         except Exception as inst:
             # Stop the timer
@@ -310,35 +332,35 @@ class Module(Module, multiprocessing.Process):
         """
         Store the trained model on disk
         """
-        self.print(f'Storing the trained model and scaler on disk.', 0, 2)
-        f = open('./modules/flowmldetection/model.bin', 'wb')
-        data = pickle.dumps(self.clf)
-        f.write(data)
-        f.close()
-        g = open('./modules/flowmldetection/scaler.bin', 'wb')
-        data = pickle.dumps(self.scaler)
-        g.write(data)
-        g.close()
+        self.print(f'Storing the trained model and scaler on disk.', 1, 2)
+        with open('./modules/flowmldetection/model.bin', 'wb') as f:
+            pickle.dump(self.clf,f)
+
+        with open('./modules/flowmldetection/scaler.bin', 'wb') as g:
+            pickle.dump(self.scaler,g)
+
 
     def read_model(self):
         """
         Read the trained model from disk
         """
         try:
-            self.print(f'Reading the trained model from disk.', 0, 2)
-            f = open('./modules/flowmldetection/model.bin', 'rb')
-            self.clf = pickle.load(f)
-            f.close()
-            self.print(f'Reading the trained scaler from disk.', 0, 2)
-            g = open('./modules/flowmldetection/scaler.bin', 'rb')
-            self.scaler = pickle.load(g)
-            g.close()
+            self.print(f'Reading the trained model from disk.', 1, 2)
+            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.bin', 'rb') as f:
+                self.clf = pickle.load(f)
+                f.close()
+            self.print(f'Reading the trained scaler from disk.', 1, 2)
+            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/scaler.bin', 'rb') as g:
+                self.scaler = pickle.load(g)
+                g.close()
         except FileNotFoundError:
             # If there is no model, create one empty
-            self.print('There was no model. Creating a new empty model.', 0, 2)
+            self.print('There was no model. Creating a new empty model.', 1, 2)
+            print('There was no model. Creating a new empty model.')
             self.clf = SGDClassifier(warm_start=True, loss='hinge', penalty="l1")
         except EOFError:
-            self.print('Error reading model from disk. Creating a new empty model.', 0, 2)
+            self.print('Error reading model from disk. Creating a new empty model.', 1, 2)
+            print('Error reading model from disk. Creating a new empty model.')
             self.clf = SGDClassifier(warm_start=True, loss='hinge', penalty="l1")
 
     def set_evidence_malicious_flow(self, saddr, sport, daddr, dport, profileid, twid, uid):
@@ -363,8 +385,8 @@ class Module(Module, multiprocessing.Process):
         # Load the model first
         try:
             # Load the model
-            self.read_model()
-
+            # self.read_model()
+            logger.add('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/output/ml.log')
             while True:
                 try:
                     message = self.c1.get_message(timeout=self.timeout)
@@ -389,6 +411,7 @@ class Module(Module, multiprocessing.Process):
                         # Get the uid which is the key
                         uid = next(iter(flow))
                         self.flow_dict = json.loads(flow[uid])
+                        logger.log(1,self.flow_dict)
 
                         if self.mode == 'train':
                             # We are training
@@ -408,12 +431,12 @@ class Module(Module, multiprocessing.Process):
                         elif self.mode == 'test':
                             # We are testing, which means using the model to detect
                             self.process_flow()
-                            
+                            logger.log(0,flow)
                             # After processing the flow, it may happen that we delete icmp/arp/etc
                             # so the dataframe can be empty
                             if self.flow.empty:
                                 continue
-
+                            print(123)
                             # Predict
                             pred = self.detect()
                             label = self.flow_dict["label"]

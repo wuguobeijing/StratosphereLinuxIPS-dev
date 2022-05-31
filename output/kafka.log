@@ -3943,3 +3943,12 @@ dtype: object
 2022-04-24 22:37:07.816 | DEBUG    | __main__:<module>:85 - This's a log message in file
 2022-04-24 22:37:13.858 | INFO     | __main__:<module>:120 - modbus_topic
 2022-04-24 22:37:13.895 | INFO     | __main__:<module>:120 - ntp_topic
+2022-05-07 10:51:09.512 | DEBUG    | __main__:<module>:87 - This's a log message in file
+2022-05-07 10:51:15.295 | INFO     | __main__:<module>:122 - dns_topic
+2022-05-07 10:51:15.595 | INFO     | __main__:<module>:122 - dhcp_topic
+2022-05-07 10:52:59.374 | DEBUG    | __main__:<module>:87 - This's a log message in file
+2022-05-07 10:53:05.481 | INFO     | __main__:<module>:122 - dns_topic
+2022-05-07 10:53:05.555 | INFO     | __main__:<module>:122 - dhcp_topic
+2022-05-07 11:11:22.124 | DEBUG    | __main__:<module>:87 - This's a log message in file
+2022-05-07 11:11:28.233 | INFO     | __main__:<module>:122 - dns_topic
+2022-05-07 11:11:28.303 | INFO     | __main__:<module>:122 - dhcp_topic
