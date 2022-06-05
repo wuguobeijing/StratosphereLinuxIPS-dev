@@ -1,20 +1,23 @@
 name_unique:
   appproto_name:
   - '-'
-  - http
-  - ''
   - dns
-  - ssl
   - modbus
+  - ''
+  - ssl
+  - http
+  - dhcp
+  - ssh
   origstate_name:
   - OTH
+  - S1
+  - S0
   - SF
   - ''
-  - S0
-  - RSTR
-  - SHR
+  - RSTO
+  - REJ
   proto_name:
-  - tcp
-  - ARP
-  - udp
   - icmp
+  - tcp
+  - udp
+  - ARP
