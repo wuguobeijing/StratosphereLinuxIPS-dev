@@ -37,6 +37,7 @@ def received():
     # 获取文件的名字,大小
     filename = os.path.basename(filename)
     file_size = int(file_size)
+    print(file_size)
 
     # 文件接收处理
     progress = tqdm.tqdm(range(file_size), f'接收{filename}', unit='B', unit_divisor=1024, unit_scale=True)
@@ -44,7 +45,6 @@ def received():
     with open("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/" + filename,
               'wb') as f:
         for _ in progress:
-
             # 从客户端读取数据
             bytes_read = client_socket.recv(Buffersize)
             # 如果没有数据传输内容
@@ -54,7 +54,6 @@ def received():
             f.write(bytes_read)
             # 更新进度条
             progress.update(len(bytes_read))
-
     # 关闭资源
     client_socket.close()
     s.close()

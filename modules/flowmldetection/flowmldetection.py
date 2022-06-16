@@ -1,5 +1,8 @@
 # Must imports
+import math
+
 import numpy
+import pandas
 import yaml
 from kafka import KafkaProducer
 
@@ -116,7 +119,7 @@ class Module(Module, multiprocessing.Process):
         # Channel timeout
         self.timeout = 0
         # Minum amount of new lables needed to trigger the train
-        self.minimum_lables_to_retrain = 3000
+        self.minimum_lables_to_retrain = 3300
         # To plot the scores of training
         # self.scores = []
         # The scaler trained during training and to use during testing
@@ -312,8 +315,7 @@ class Module(Module, multiprocessing.Process):
     def process_features_self(self, dataset):
         try:
             # del dataset['Unnamed: 0']
-            df = dataset.drop(columns=['ts', 'saddr', 'sport', 'daddr', 'dport', 'flow_type',
-                                       'module_labels'])
+            df = dataset.drop(columns=['ts', 'saddr', 'sport', 'daddr', 'dport', 'flow_type'])
             df = pd.get_dummies(df, columns=['proto'])
             df = pd.get_dummies(df, columns=['origstate'])
             df = pd.get_dummies(df, columns=['state'])
@@ -375,24 +377,25 @@ class Module(Module, multiprocessing.Process):
             # Check how many different labels are in the DB
             # We need both normal and malware
             labels = __database__.get_labels()
-            if len(labels) == 1:
-                # Only 1 label has flows
-                # There are not enough different labels, so insert two flows
-                # that are fake but representative of a normal and malware flow
-                # they are only for the training process
-                # At least 1 flow of each label is required
-                # self.print(f'Amount of labeled flows: {labels}', 0, 1)
-                flows.append(
-                    {'ts': 1594417039.029793, 'dur': '1.9424750804901123', 'saddr': '10.7.10.101', 'sport': '49733',
-                     'daddr': '40.70.224.145', 'dport': '443', 'proto': 'tcp', 'origstate': 'SRPA_SPA',
-                     'state': 'Established', 'pkts': 84, 'allbytes': 42764, 'spkts': 37, 'sbytes': 25517,
-                     'appproto': 'ssl', 'label': 'Malware', 'module_labels': {'flowalerts-long-connection': 'Malware'}})
-                flows.append({'ts': 1382355032.706468, 'dur': '10.896695', 'saddr': '147.32.83.52', 'sport': '47956',
-                              'daddr': '80.242.138.72', 'dport': '80', 'proto': 'tcp', 'origstate': 'SRPA_SPA',
-                              'state': 'Established', 'pkts': 67, 'allbytes': 67696, 'spkts': 1, 'sbytes': 100,
-                              'appproto': 'http', 'label': 'Normal',
-                              'module_labels': {'flowalerts-long-connection': 'Normal'}})
-                # If there are enough flows, we dont insert them anymore
+            # if len(labels) == 1:
+            #     # Only 1 label has flows
+            #     # There are not enough different labels, so insert two flows
+            #     # that are fake but representative of a normal and malware flow
+            #     # they are only for the training process
+            #     # At least 1 flow of each label is required
+            #     # self.print(f'Amount of labeled flows: {labels}', 0, 1)
+            #     flows.append(
+            #         {'ts': 1594417039.029793, 'dur': '1.9424750804901123', 'saddr': '10.7.10.101', 'sport': '49733',
+            #          'daddr': '40.70.224.145', 'dport': '443', 'proto': 'tcp', 'origstate': 'SRPA_SPA',
+            #          'state': 'Established', 'pkts': 84, 'allbytes': 42764, 'spkts': 37, 'sbytes': 25517,
+            #          'appproto': 'ssl', 'label': 'Malware', 'module_labels': {'flowalerts-long-connection': 'Malware'}})
+            #     flows.append(
+            #         {'ts': 1382355032.706468, 'dur': '10.896695', 'saddr': '147.32.83.52', 'sport': '47956',
+            #         'daddr': '80.242.138.72', 'dport': '80', 'proto': 'tcp', 'origstate': 'SRPA_SPA',
+            #         'state': 'Established', 'pkts': 67, 'allbytes': 67696, 'spkts': 1, 'sbytes': 100,
+            #         'appproto': 'http', 'label': 'Normal',
+            #         'module_labels': {'flowalerts-long-connection': 'Normal'}})
+            #     # If there are enough flows, we dont insert them anymore
 
             # Convert to pandas df
             df_flows = pd.DataFrame(flows)
@@ -405,6 +408,7 @@ class Module(Module, multiprocessing.Process):
                               '/config.yaml', proto_name=proto_name, origstate_name=origstate_name,
                          appproto_name=appproto_name)
                 df_flows = self.process_features_self(df_flows)
+                # self.print(df_flows['module_labels'])
                 out_file = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/output/data.parquet'
                 table = pa.Table.from_pandas(df_flows)
                 # Write direct to your parquet file
@@ -501,8 +505,12 @@ class Module(Module, multiprocessing.Process):
         """
         try:
             pred = self.clf.predict(self.flow)
-            self.print(pred)
-            return pred
+            pred_mul = self.mul_clf.predict(self.flow)
+            pre_prob = self.clf.predict_proba(self.flow)
+            # self.print(pred)
+            # self.print(pred_mul)
+            # self.print((pre_prob,type(pre_prob)))
+            return pred, pred_mul, pre_prob
         except Exception as inst:
             # Stop the timer
             self.print('Error in self_detect() X_flow:')
@@ -530,8 +538,10 @@ class Module(Module, multiprocessing.Process):
         """
         # try:
         self.print(f'Reading the trained model from disk.', 1, 2)
-        model_path = "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model/exp_ddos"
-        self.clf = TabularPredictor.load(model_path)
+        binary_model_path = "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model/edge_model/binary"
+        multi_model_path = "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model/edge_model/multi"
+        self.clf = TabularPredictor.load(binary_model_path)
+        self.mul_clf = TabularPredictor.load(multi_model_path)
 
     def read_model(self):
         """
@@ -717,7 +727,7 @@ class Module(Module, multiprocessing.Process):
                             # Train an algorithm
                             # self.train_self()
                     elif self.mode == 'test':
-                        self.print(df_todetect)
+                        # self.print(df_todetect)
                         # We are testing, which means using the model to detect
                         self.process_flow(df_todetect)
 
@@ -726,10 +736,13 @@ class Module(Module, multiprocessing.Process):
                         if not self.flow.empty:
                             # Predict
                             try:
-                                pred = self.detect_self()
+                                pred, pred_mul, pre_prob = self.detect_self()
+                                # self.print(pre_prob)
                             except Exception as insp:
                                 self.print(insp, 1, 1)
                                 pred = ['normal']
+                                pred_mul = ['normal']
+                                pre_prob = pandas.DataFrame()
                             label = self.flow_dict["label"]
 
                             # Report
@@ -747,6 +760,14 @@ class Module(Module, multiprocessing.Process):
                                 self.print(
                                     f'Prediction {pred[0]} for label {label} flow {self.flow_dict["saddr"]}:{self.flow_dict["sport"]} -> {self.flow_dict["daddr"]}:{self.flow_dict["dport"]}/{self.flow_dict["proto"]}',
                                     0, 2)
+                                if math.fabs(float(pre_prob['normal'])-float(pre_prob['malicious'])) > 0.6:
+                                    self.print(self.flow)
+                                    if not os.path.exists('./append_attack.csv'):
+                                        self.flow.to_csv('./append_attack.csv', encoding='utf_8', mode='a', index=False,
+                                                    index_label=False)
+                                    else:
+                                        self.flow.to_csv('./append_attack.csv', encoding='utf_8', mode='a', index=False,
+                                                    index_label=False, header=False)
 
             except KeyboardInterrupt:
                 self.shutdown_gracefully()
