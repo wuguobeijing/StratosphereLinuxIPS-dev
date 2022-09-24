@@ -14,7 +14,7 @@ import pandas as pd
 import pyarrow.parquet as pq
 import pyarrow as pa
 
-from autogluon.tabular import TabularDataset, TabularPredictor
+from autogluon.tabular import TabularPredictor
 
 import configparser
 import time

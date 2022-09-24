@@ -41,7 +41,7 @@ from collections import OrderedDict
 from distutils.dir_util import copy_tree
 import asyncio
 
-version = '0.8.4'
+version = '0.1.1'
 
 # Ignore warnings on CPU from tensorflow
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -429,8 +429,7 @@ if __name__ == '__main__':
         # and alerts.json. In our case, it is output folder.
         alerts_default_path = 'output/'
 
-        print('Slips. Version {}'.format(version))
-        print('https://stratosphereips.org')
+        print('wuguo_buaa')
         print('-'*27)
 
         # Parse the parameters

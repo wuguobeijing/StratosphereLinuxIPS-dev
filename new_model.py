@@ -84,13 +84,19 @@ def un_tar(file_name):
     tar.close()
 
 
-if __name__ == '__main__':
-    consumer = KafkaConsumer('new_train_topic', value_deserializer=lambda m: json.loads(m.decode('ascii')),
-                             bootstrap_servers='wuguo-buaa:9092', group_id='edge_group')
+def reveive_model(consumer):
+    # consumer = KafkaConsumer('new_train_topic', value_deserializer=lambda m: json.loads(m.decode('ascii')),
+    #                          bootstrap_servers='wuguo-buaa:9092', group_id='edge_group')
     for message in consumer:
         if message.value['type'] == 'new_model_k' and message.value['model_host'] == 'k':
             received()
             un_gz("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar.gz")
             un_tar("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
             os.remove("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
+
+
+if __name__ == '__main__':
+    consumer = KafkaConsumer('new_train_topic', value_deserializer=lambda m: json.loads(m.decode('ascii')),
+                             bootstrap_servers='wuguo-buaa:9092', group_id='edge_group')
+    reveive_model(consumer)
     consumer.close()
