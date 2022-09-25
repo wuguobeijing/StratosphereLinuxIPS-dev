@@ -104,7 +104,7 @@ def check_redis_database(redis_host='localhost', redis_port=6379) -> bool:
     """
     try:
         r = redis.StrictRedis(host=redis_host, port=redis_port, db=1, charset="utf-8",
-                                   decode_responses=True)
+                              decode_responses=True)
         r.ping()
     except Exception as ex:
         print('[DB] Error: Is redis database running? You can run it as: "redis-server --daemonize yes"')
@@ -213,11 +213,11 @@ def prepare_zeek_scripts():
     with open(zeek_scripts_dir + '/slips-conf.zeek', 'r') as slips_conf:
         if 'local_nets' in slips_conf.read():
             is_local_nets_defined = True
-        
+
     if not is_local_nets_defined:
         with open(zeek_scripts_dir + '/slips-conf.zeek', 'a') as slips_conf:
             # update home network
-            slips_conf.write('\nredef Site::local_nets += { '+home_network+' };\n')
+            slips_conf.write('\nredef Site::local_nets += { ' + home_network + ' };\n')
 
     # # load all scripts in zeek-script dir
     # with open(zeek_scripts_dir + '/__load__.zeek','r') as f:
@@ -272,7 +272,7 @@ def shutdown_gracefully(input_information):
     """
 
     try:
-        print('\n'+'-'*27)
+        print('\n' + '-' * 27)
         print('Stopping Slips')
         # is slips currently exporting alerts?
         send_to_warden = config.get('CESNET', 'send_alerts').lower()
@@ -319,7 +319,7 @@ def shutdown_gracefully(input_information):
                         continue
                     modules_left = len(list(PIDs.keys()))
                     # to vertically align them when printing
-                    module_name = module_name + ' '*(20-len(module_name))
+                    module_name = module_name + ' ' * (20 - len(module_name))
                     print(f"\t\033[1;32;40m{module_name}\033[00m \tStopped. \033[1;32;40m{modules_left}\033[00m left.")
             max_loops -= 1
 
@@ -338,7 +338,7 @@ def shutdown_gracefully(input_information):
         # they will always be killed
         # kill processes that didn't stop after timeout
         for unstopped_proc, pid in PIDs.items():
-            unstopped_proc = unstopped_proc+' '*(20-len(unstopped_proc))
+            unstopped_proc = unstopped_proc + ' ' * (20 - len(unstopped_proc))
             try:
                 os.kill(int(pid), 9)
                 print(f'\t\033[1;32;40m{unstopped_proc}\033[00m \tKilled.')
@@ -387,7 +387,8 @@ def shutdown_gracefully(input_information):
             # Give the exact path to save(), this is where the .rdb backup will be
             __database__.save(backups_dir + input_information)
             # info will be lost only if you're out of space and redis can't write to dump.rdb, otherwise you're fine
-            print("[Main] [Warning] stop-writes-on-bgsave-error is set to no, information may be lost in the redis backup file.")
+            print(
+                "[Main] [Warning] stop-writes-on-bgsave-error is set to no, information may be lost in the redis backup file.")
             print(f"[Main] Database saved to {backups_dir}{input_information}")
 
         # if store_a_copy_of_zeek_files is set to yes in slips.conf, copy the whole zeek_files dir to the output dir
@@ -418,10 +419,10 @@ def is_debugger_active() -> bool:
     gettrace = getattr(sys, 'gettrace', lambda: None)
     return gettrace() is not None
 
+
 ####################
 # Main
 ####################
-
 
 if __name__ == '__main__':
     try:
@@ -430,7 +431,7 @@ if __name__ == '__main__':
         alerts_default_path = 'output/'
 
         print('wuguo_buaa')
-        print('-'*27)
+        print('-' * 27)
 
         # Parse the parameters
         slips_conf_path = get_cwd() + 'slips.conf'
@@ -451,7 +452,7 @@ if __name__ == '__main__':
                             help='create log files with all the traffic info and detections.')
         parser.add_argument('-F', '--pcapfilter', action='store', required=False, type=str,
                             help='packet filter for Zeek. BPF style.')
-        parser.add_argument('-G',  '--gui', help='Use the nodejs GUI interface.',
+        parser.add_argument('-G', '--gui', help='Use the nodejs GUI interface.',
                             required=False, default=False, action='store_true')
         parser.add_argument('-cc', '--clearcache', action='store_true',
                             required=False, help='clear a cache database.')
@@ -509,6 +510,7 @@ if __name__ == '__main__':
                 from slips_files.core.database import __database__
                 from multiprocessing import Queue
                 from modules.blocking.blocking import Module
+
                 blocking = Module(Queue(), config)
                 blocking.start()
                 blocking.delete_slipsBlocking_chain()
@@ -517,10 +519,11 @@ if __name__ == '__main__':
 
         if args.db:
             from slips_files.core.database import __database__
+
             __database__.start(config)
-            if not __database__.load(args.db): 
+            if not __database__.load(args.db):
                 print(f"[Main] Failed to {args.db}")
-            else: 
+            else:
                 print(f"{args.db.split('/')[-1]} loaded successfully. Run ./kalipso.sh")
             terminate_slips()
 
@@ -677,6 +680,7 @@ if __name__ == '__main__':
         # Creation of the threads
         ##########################
         from slips_files.core.database import __database__
+
         # Output thread. This thread should be created first because it handles
         # the output of the rest of the threads.
         # Create the queue
@@ -737,7 +741,7 @@ if __name__ == '__main__':
                 to_ignore.append('blocking')
 
             # leak detector only works on pcap files
-            if input_type != 'pcap': 
+            if input_type != 'pcap':
                 to_ignore.append('leak_detector')
             try:
                 # This 'imports' all the modules somehow, but then we ignore some
@@ -805,7 +809,7 @@ if __name__ == '__main__':
 
         # Input process
         # Create the input process and start it
-        inputProcess = InputProcess(outputProcessQueue, profilerProcessQueue, 
+        inputProcess = InputProcess(outputProcessQueue, profilerProcessQueue,
                                     input_type, input_information, config, args.pcapfilter, zeek_bro)
         inputProcess.start()
         outputProcessQueue.put('10|main|Started input thread [PID {}]'.format(inputProcess.pid))
@@ -844,7 +848,7 @@ if __name__ == '__main__':
             while True:
                 # Sleep some time to do rutine checks
                 time.sleep(check_time_sleep)
-                slips_internal_time = float(__database__.getSlipsInternalTime())+1
+                slips_internal_time = float(__database__.getSlipsInternalTime()) + 1
                 # Get the amount of modified profiles since we last checked
                 modified_profiles, last_modified_tw_time = __database__.getModifiedProfilesSince(slips_internal_time)
                 amount_of_modified = len(modified_profiles)

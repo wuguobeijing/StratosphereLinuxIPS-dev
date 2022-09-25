@@ -5,10 +5,11 @@ import pickle
 import xlrd
 import xlwt
 from tkinter import *
-from tkinter import messagebox, font
+from tkinter import messagebox
 from tkinter.messagebox import askyesno, showwarning
 
 from kafka import KafkaConsumer
+from kafka.errors import NoBrokersAvailable
 
 import GUI_iptables
 import argparse
@@ -38,7 +39,6 @@ class MY_GUI():
         self.init_window.geometry('840x480+430+160')  # 290 160为窗口大小，+10 +10 定义窗口弹出时的默认展示位置
         # self.init_window_name.geometry('1068x681+10+10')
         self.init_window["bg"] = "DimGray"  # 窗口背景色，其他背景色见：blog.csdn.net/chl0000/article/details/7657887
-        # self.init_window_name.attributes("-alpha",0.9)                          #虚化，值越小虚化程度越高
         # 标签
         self.frame_top = Frame(self.init_window, relief=RAISED, borderwidth=2)
         self.frame_top.pack(padx=2, pady=2, ipady=2, ipadx=2, side='top')
@@ -1292,8 +1292,8 @@ def open_receive():
                                  value_deserializer=lambda m: json.loads(m.decode('ascii')),
                                  bootstrap_servers='wuguo-buaa:9092', group_id='edge_group')
         reveive_model(consumer)
-    except:
-        messagebox.showerror("Ops", "please open kafka server first")
+    except NoBrokersAvailable:
+        print("please open kafka server first")
 
 
 if __name__ == '__main__':
