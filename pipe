@@ -1,0 +1,21 @@
+Started main program [PID 8872]
+Started output thread [PID 8891]
+		Starting the module flowmldetection (Train or test a Machine Learning model to detect malicious flows) [PID 8899]
+[flowmldetection] time.struct_time(tm_year=2022, tm_mon=9, tm_mday=30, tm_hour=15, tm_min=34, tm_sec=39, tm_wday=4, tm_yday=273, tm_isdst=0)
+[flowmldetection] Reading the trained model from disk.
+[flowmldetection]    dur  pkts  allbytes  ...  proto_unknown  origstate_unknown  appproto_unknown
+0  0.0   0.0       0.0  ...            0.0                0.0               0.0
+
+[1 rows x 32 columns]
+Started Evidence thread [PID 8903]
+Started Profiler thread [PID 8905]
+Started input thread [PID 8906]
+
+Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-09-30--15:34:45)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-09-30--15:34:50)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-09-30--15:34:55)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 1. (2022-09-30--15:35:00)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 1. (2022-09-30--15:35:05)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 1. (2022-09-30--15:35:10)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 0. (2022-09-30--15:35:15)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 0. (2022-09-30--15:35:20)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 1. (2022-09-30--15:35:25)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 0. (2022-09-30--15:35:30)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 0. (2022-09-30--15:35:35)Total Number of Profiles in DB so far: 1. Modified Profiles in the last TW: 0. (2022-09-30--15:35:40)Total Number of Profiles in DB so far: 2. Modified Profiles in the last TW: 0. (2022-09-30--15:35:45)Total Number of Profiles in DB so far: 3. Modified Profiles in the last TW: 1. (2022-09-30--15:35:50)Total Number of Profiles in DB so far: 3. Modified Profiles in the last TW: 1. (2022-09-30--15:35:55)
+---------------------------
+Stopping Slips
+	[1;32;40mOutputProcess       [00m 	Stopped. [1;32;40m4[00m left.
+	[1;32;40mflowmldetection     [00m 	Killed.
+	[1;32;40mEvidenceProcess     [00m 	Killed.
+	[1;32;40mProfilerProcess     [00m 	Killed.
+	[1;32;40minputProcess        [00m 	Killed.

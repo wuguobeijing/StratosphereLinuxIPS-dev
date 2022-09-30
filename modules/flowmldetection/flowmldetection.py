@@ -537,6 +537,7 @@ class Module(Module, multiprocessing.Process):
         Read the trained model from disk
         """
         # try:
+        self.print(time.localtime(),1,2)
         self.print(f'Reading the trained model from disk.', 1, 2)
         binary_model_path = "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model/edge_model/binary"
         multi_model_path = "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model/edge_model/multi"

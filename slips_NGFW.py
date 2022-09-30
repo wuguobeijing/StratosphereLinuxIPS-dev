@@ -93,11 +93,11 @@ class Slips:
                 return False
         return logs_folder
 
-    async def update_ti_files(self, outputqueue, config):
+    async def update_ti_files(self, outputqueue):
         """
         Update malicious files and store them in database before slips start
         """
-        update_manager = UpdateFileManager(outputqueue, config)
+        update_manager = UpdateFileManager(outputqueue, self.config)
         # create_task is used to run update() function concurrently instead of serially
         update_finished = asyncio.create_task(update_manager.update())
         # wait for UpdateFileManager to finish before starting all the modules
@@ -183,16 +183,6 @@ class Slips:
 
         return plugins, failed_to_load_modules
 
-    def get_cwd(self):
-        # Can't use os.getcwd() because slips directory name won't always be Slips plus this way requires less parsing
-        for arg in sys.argv:
-            if 'slips.py' in arg:
-                # get the path preceeding slips.py
-                # (may be ../ or  ../../ or '' if slips.py is in the cwd),
-                # this path is where slips.conf will be
-                cwd = arg[:arg.index('slips.py')]
-                return cwd
-
     def prepare_zeek_scripts(self):
         """
         Adds local network to slips-conf.zeek
@@ -205,7 +195,7 @@ class Slips:
             from slips_files.common.slips_utils import utils
             home_network = utils.home_network_ranges
 
-        zeek_scripts_dir = os.getcwd() + '/zeek-scripts'
+        zeek_scripts_dir = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/zeek-scripts'
         # add local sites if not there
         is_local_nets_defined = False
         with open(zeek_scripts_dir + '/slips-conf.zeek', 'r') as slips_conf:
@@ -398,7 +388,7 @@ class Slips:
             print('-' * 27)
 
             # Parse the parameters
-            slips_conf_path = 'slips.conf'
+            slips_conf_path = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf'
 
             # Read the config file name given from the parameters
             # don't use '%' for interpolation.
@@ -409,6 +399,7 @@ class Slips:
             try:
                 with open(slips_conf_path) as source:
                     self.config.read_file(source)
+                    print(self.config)
             except IOError:
                 pass
             except TypeError:
@@ -663,12 +654,12 @@ class Slips:
             # Create the queue for the evidence thread
             self.evidenceProcessQueue = Queue()
             # Create the thread and start it
-            self.evidenceProcessThread = EvidenceProcess(self.evidenceProcessQueue, self.outputProcessQueue,
-                                                         self.config, self.output, logs_folder)
-            self.evidenceProcessThread.start()
-            self.outputProcessQueue.put(
-                '10|main|Started Evidence thread [PID {}]'.format(self.evidenceProcessThread.pid))
-            self.db.store_process_PID('EvidenceProcess', int(self.evidenceProcessThread.pid))
+            # self.evidenceProcessThread = EvidenceProcess(self.evidenceProcessQueue, self.outputProcessQueue,
+            #                                              self.config, self.output, logs_folder)
+            # self.evidenceProcessThread.start()
+            # self.outputProcessQueue.put(
+            #     '10|main|Started Evidence thread [PID {}]'.format(self.evidenceProcessThread.pid))
+            # self.db.store_process_PID('EvidenceProcess', int(self.evidenceProcessThread.pid))
 
             # Profile thread
             # Create the queue for the profile thread
@@ -795,4 +786,4 @@ class Slips:
 
 if __name__ == '__main__':
     slips = Slips()
-    slips.main(filepath=None, interface=None, gui=True, blocking=False, clearblocking=False, output=None)
+    slips.main(filepath=None, interface=None, gui=True, blocking=False, clearblocking=False, output='')

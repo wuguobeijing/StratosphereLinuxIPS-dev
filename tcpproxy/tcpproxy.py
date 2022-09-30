@@ -10,7 +10,7 @@ import ssl
 import time
 import select
 import errno
-import GUI_firewall
+
 
 # TODO: implement verbose output
 # some code snippets, as well as the original idea, from Black Hat Python

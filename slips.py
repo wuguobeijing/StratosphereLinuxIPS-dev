@@ -207,7 +207,7 @@ def prepare_zeek_scripts():
         from slips_files.common.slips_utils import utils
         home_network = utils.home_network_ranges
 
-    zeek_scripts_dir = os.getcwd() + '/zeek-scripts'
+    zeek_scripts_dir = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/zeek-scripts'
     # add local sites if not there
     is_local_nets_defined = False
     with open(zeek_scripts_dir + '/slips-conf.zeek', 'r') as slips_conf:
@@ -434,7 +434,7 @@ if __name__ == '__main__':
         print('-' * 27)
 
         # Parse the parameters
-        slips_conf_path = get_cwd() + 'slips.conf'
+        slips_conf_path = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf'
         parser = ArgumentParser(usage="./slips.py -c <configfile> [options] [file ...]",
                                 add_help=False)
         parser.add_argument('-c', '--config', metavar='<configfile>',
