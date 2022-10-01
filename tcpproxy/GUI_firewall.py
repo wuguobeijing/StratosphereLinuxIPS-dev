@@ -259,7 +259,7 @@ class MY_LOG_GUI():
             self.show_common_log.insert('insert', file_text)
 
     def read_modbus_log(self):
-        file_path = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/parser_modbus_log.log'
+        file_path = 'parser_modbus_log.log'
         # print('打开文件：', file_path)
         if file_path is not None:
             try:
@@ -520,7 +520,7 @@ class Indus_Rule():
         # self.add_to_list()
 
     def add_init_rule(self):
-        data_path = '/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/log/init_rules.xls'  # excle表格路径，需传入绝对路径
+        data_path = 'log/init_rules.xls'  # excle表格路径，需传入绝对路径
         try:
             data = xlrd.open_workbook(data_path)
             sheetname = data.sheet_names()[0]  # excle表格内sheet名
@@ -568,7 +568,7 @@ class Indus_Rule():
             for i in range(7):
                 del self.rule_list[i][rule_index]
 
-            data = xlrd.open_workbook('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/log/init_rules.xls')
+            data = xlrd.open_workbook('log/init_rules.xls')
             sheetname = data.sheet_names()[0]  # excle表格内sheet名
             print(sheetname)
             table = data.sheet_by_name('Sheet1')
@@ -648,14 +648,14 @@ class Indus_Rule():
         show_list = []
         arr = np.array(self.rule_list)
         try:
-            data = xlrd.open_workbook('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/log/init_rules.xls')
+            data = xlrd.open_workbook('log/init_rules.xls')
             sheetname = data.sheet_names()[0]  # excle表格内sheet名
         except:
             workbook = xlwt.Workbook(encoding='ascii')
             worksheet = workbook.add_sheet('Sheet1')
             workbook.save('log/init_rules.xls')  # 保存文件
 
-        data = xlrd.open_workbook('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/log/init_rules.xls')
+        data = xlrd.open_workbook('log/init_rules.xls')
         sheetname = data.sheet_names()[0]  # excle表格内sheet名
         print(sheetname)
         table = data.sheet_by_name('Sheet1')
@@ -1138,7 +1138,7 @@ def main():
     window["bg"] = "PaleGoldenrod"
     # 标签 用户名密码
     canvas = Canvas(window, height=300, width=500)
-    imagefile = PhotoImage(file='/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/login.png')
+    imagefile = PhotoImage(file='login.png')
     image = canvas.create_image(220, 150, anchor='center', image=imagefile)
     canvas.pack(side='top')
 
@@ -1161,10 +1161,10 @@ def main():
         usr_pwd = var_usr_pwd.get()
         # 从本地字典获取用户信息，如果没有则新建本地数据库
         try:
-            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/usr_info.pickle', 'rb') as usr_file:
+            with open('usr_info.pickle', 'rb') as usr_file:
                 usrs_info = pickle.load(usr_file)
         except FileNotFoundError:
-            with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/usr_info.pickle', 'wb') as usr_file:
+            with open('usr_info.pickle', 'wb') as usr_file:
                 usrs_info = {'admin': 'admin'}
                 pickle.dump(usrs_info, usr_file)
         # 判断用户名和密码是否匹配
@@ -1201,7 +1201,7 @@ def main():
             if rk == 'adminbuaa':
                 # 本地加载已有用户信息,如果没有则已有用户信息为空
                 try:
-                    with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/usr_info.pickle', 'rb') as usr_file:
+                    with open('usr_info.pickle', 'rb') as usr_file:
                         exist_usr_info = pickle.load(usr_file)
                 except FileNotFoundError:
                     exist_usr_info = {}
@@ -1216,7 +1216,7 @@ def main():
                 # 注册信息没有问题则将用户名密码写入数据库
                 else:
                     exist_usr_info[nn] = np
-                    with open('/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/tcpproxy/usr_info.pickle', 'wb') as usr_file:
+                    with open('usr_info.pickle', 'wb') as usr_file:
                         pickle.dump(exist_usr_info, usr_file)
                     messagebox.showinfo('欢迎', '注册成功')
                     # 注册成功关闭注册框

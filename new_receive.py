@@ -8,7 +8,9 @@ import gzip
 import os
 import tarfile
 
+import yaml
 from kafka import KafkaConsumer
+from loguru import logger
 
 from slips_NGFW import Slips
 
@@ -91,24 +93,54 @@ def un_tar(file_name):
     tar.close()
 
 
+def set_yaml(path, offset):
+    data = {
+        'kafka': {
+            'prefix': offset
+        }
+    }
+    with open(path, 'w', encoding='utf-8') as f:
+        yaml.dump(data, f)
+
+
+def read_yaml(path):
+    with open(path, encoding='utf8') as yaml_file:
+        # 解析yaml
+        yamlfile = yaml.load(yaml_file, Loader=yaml.FullLoader)
+        prefix = yamlfile["kafka"]['prefix']
+        logger.log(1, prefix)
+        return prefix
+
+
 def reveive_model(consumer):
+    old_prefix = read_yaml(path='/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/config.yaml')
+    print(old_prefix)
     for message in consumer:
-        if message.value['type'] == 'new_model_k' and message.value['model_host'] == 'k':
-            received('new_model', 2234)
-            un_gz("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar.gz")
-            un_tar("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
-            os.remove("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
-        elif message.value['type'] == 'new_slips_order' and message.value['model_host'] == 'k':
-            interface_path = message.value['order_param']['interface']
-            slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
-                          "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
-                          "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf", "-i", interface_path]
-            print(slips_rule)
-            p = subprocess.Popen(slips_rule, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            output, err = p.communicate()
-            print(output)
-        elif message.value['type'] == 'new_slips_conf' and message.value['model_host'] == 'k':
-            received('new_conf', 2235)
+        print(message)
+        if old_prefix >= message.offset:
+            logger.log(1, "offset incorrect")
+            pass
+        else:
+            set_yaml(path='/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/config.yaml',
+                     offset=message.offset)
+            if message.value['type'] == 'new_model_k' and message.value['model_host'] == 'k':
+                received('new_model', 2234)
+                un_gz("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar.gz")
+                un_tar("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
+                os.remove("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
+            elif message.value['type'] == 'new_slips_order' and message.value['model_host'] == 'k':
+                interface_path = message.value['order_param']['interface']
+                slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
+                              "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
+                              "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf", "-i",
+                              interface_path]
+                print(slips_rule)
+                p = subprocess.Popen(slips_rule, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                output, err = p.communicate()
+                print(output)
+            elif message.value['type'] == 'new_slips_conf' and message.value['model_host'] == 'k':
+                received('new_conf', 2235)
+
 
 if __name__ == '__main__':
     consumer = KafkaConsumer('new_train_topic', value_deserializer=lambda m: json.loads(m.decode('ascii')),
