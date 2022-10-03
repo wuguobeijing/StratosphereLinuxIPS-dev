@@ -1273,7 +1273,8 @@ def open_receive():
         print("redis init: ", output)
         consumer = KafkaConsumer('new_train_topic',
                                  value_deserializer=lambda m: json.loads(m.decode('ascii')),
-                                 bootstrap_servers='wuguo-buaa:9092', group_id='edge_group')
+                                 bootstrap_servers='wuguo-buaa:9092', group_id='edge_group',
+                                 auto_offset_reset='latest', enable_auto_commit=True)
         reveive_model(consumer)
     except NoBrokersAvailable:
         print("please open kafka server first")

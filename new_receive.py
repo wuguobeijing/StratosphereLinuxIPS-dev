@@ -129,13 +129,42 @@ def reveive_model(consumer):
                 un_tar("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
                 os.remove("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/modules/flowmldetection/model.tar")
             elif message.value['type'] == 'new_slips_order' and message.value['model_host'] == 'k':
+                mode = None
+                gui = None
                 interface_path = message.value['order_param']['interface']
-                slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
-                              "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
-                              "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf", "-i",
-                              interface_path]
+                log_level = message.value['order_param']['log_level']
+                if message.value['order_param']['gui']:
+                    gui = "-G"
+                if message.value['order_param']['blocking']:
+                    mode = "--blocking"
+                elif message.value['order_param']['clear_blocking']:
+                    mode = "--clearblocking"
+                if mode is not None:
+                    if gui is not None:
+                        slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
+                                      "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
+                                      "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf", "-i",
+                                      interface_path, "--verbose", log_level, gui, mode]
+                    else:
+                        slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
+                                      "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
+                                      "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf",
+                                      "-i",
+                                      interface_path, "--verbose", log_level, mode]
+                else:
+                    if gui is not None:
+                        slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
+                                  "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
+                                  "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf", "-i",
+                                  interface_path, "--verbose", log_level, gui]
+                    else:
+                        slips_rule = ["/home/wuguo-buaa/anaconda3/envs/slips/bin/python",
+                                  "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.py",
+                                  "-c", "/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev/slips.conf",
+                                  "-i",
+                                  interface_path, "--verbose", log_level]
                 print(slips_rule)
-                p = subprocess.Popen(slips_rule, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                p = subprocess.Popen(slips_rule, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                 output, err = p.communicate()
                 print(output)
             elif message.value['type'] == 'new_slips_conf' and message.value['model_host'] == 'k':

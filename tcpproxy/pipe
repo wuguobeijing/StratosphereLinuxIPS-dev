@@ -1,17 +1,10 @@
-Started main program [PID 4651]
-Started output thread [PID 4662]
-		Starting the module flowmldetection (Train or test a Machine Learning model to detect malicious flows) [PID 4670]
-[flowmldetection] time.struct_time(tm_year=2022, tm_mon=10, tm_mday=1, tm_hour=19, tm_min=39, tm_sec=32, tm_wday=5, tm_yday=274, tm_isdst=0)
+Started main program [PID 6550]
+Started output thread [PID 6562]
+		Starting the module flowmldetection (Train or test a Machine Learning model to detect malicious flows) [PID 6619]
+[flowmldetection] time.struct_time(tm_year=2022, tm_mon=10, tm_mday=3, tm_hour=18, tm_min=58, tm_sec=0, tm_wday=0, tm_yday=276, tm_isdst=0)
 [flowmldetection] Reading the trained model from disk.
-[flowmldetection]    dur  pkts  allbytes  ...  proto_unknown  origstate_unknown  appproto_unknown
-0  0.0   0.0       0.0  ...            0.0                0.0               0.0
 
-[1 rows x 32 columns]
-Started Evidence thread [PID 4675]
-Started Profiler thread [PID 4676]
-Started input thread [PID 4677]
-
-Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:39:39)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:39:44)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:39:49)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:39:54)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:39:59)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:40:04)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:40:09)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:40:14)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-01--19:40:19)
+Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:06)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:11)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:16)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:21)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:26)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:31)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:36)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:41)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:46)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:51)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:58:56)Total Number of Profiles in DB so far: 0. Modified Profiles in the last TW: 0. (2022-10-03--18:59:01)
 ---------------------------
 Stopping Slips
 	[1;32;40mOutputProcess       [00m 	Stopped. [1;32;40m4[00m left.
