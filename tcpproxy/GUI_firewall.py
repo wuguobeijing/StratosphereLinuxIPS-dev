@@ -7,10 +7,10 @@ import xlwt
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno, showwarning
-
-from kafka import KafkaConsumer
+import pandas as pd
+from kafka import KafkaConsumer, KafkaProducer
 from kafka.errors import NoBrokersAvailable
-
+from src.adtk.data import validate_series
 import GUI_iptables
 import argparse
 import sys
@@ -22,7 +22,7 @@ import select
 import errno
 import numpy as np
 import subprocess
-from new_receive import reveive_model
+from new_receive import NewReceive
 
 LOG_LINE_NUM = 0
 
@@ -1275,29 +1275,49 @@ def open_receive():
                                  value_deserializer=lambda m: json.loads(m.decode('ascii')),
                                  bootstrap_servers='wuguo-buaa:9092', group_id='edge_group',
                                  auto_offset_reset='latest', enable_auto_commit=True)
-        reveive_model(consumer)
+        newRecieve = NewReceive()
+        newRecieve.reveive_model(consumer)
     except NoBrokersAvailable:
         print("please open kafka server first")
 
 
+def send_data():
+    time.sleep(10)
+    producer = KafkaProducer(bootstrap_servers='wuguo-buaa:9092',
+                             value_serializer=lambda m: json.dumps(m).encode('ascii'))
+    s_mul = pd.read_csv('./data/IoT_Modbus_handle.csv',
+                    usecols=['Time1', 'FC1_Read_Input_Register', 'FC2_Read_Discrete_Value', 'FC3_Read_Holding_Register',
+                             'FC4_Read_Coil'], parse_dates=True, squeeze=True)
+    s_mul.set_index('Time1', inplace=True)
+    s_season = pd.read_csv('./data/seasonal.csv',
+                    usecols=['Time', 'Traffic'], parse_dates=True, squeeze=True)
+    s_season.set_index('Time', inplace=True)
+    for i in range(10000):
+        mul = s_mul.iloc[i]
+        json_content = {"data_mul": [int(mul.FC1_Read_Input_Register), int(mul.FC2_Read_Discrete_Value),
+                                     int(mul.FC3_Read_Holding_Register), int(mul.FC4_Read_Coil)],
+                        "data_season": int(s_season.iloc[i].Traffic)}
+        print(json_content)
+        producer.send('business_topic', json_content)
+        time.sleep(1)
+
 if __name__ == '__main__':
+    t3 = threading.Thread(target=send_data, args=())
     t1 = threading.Thread(target=main, args=())
     t2 = threading.Thread(target=open_receive, args=())
+
 
     # 3. 守护线程 setDaemon()  语法：子线程名.setDaemon()
     # 主线程执行完，子线程也跟着结束，默认False，要True
     t1.setDaemon(True)
     t2.setDaemon(True)
+    t3.setDaemon(True)
 
     # 4. 开启子线程  start()
+
     t1.start()
     t2.start()
+    t3.start()
     t1.join()
     t2.join()
-
-    # thread_main = threading.Thread(main())
-    # kafka_thread = threading.Thread(open_receive())
-    # thread_main.setDaemon(True)
-    # kafka_thread.setDaemon(True)
-    # kafka_thread.start()
-    # thread_main.start()
+    t3.join()

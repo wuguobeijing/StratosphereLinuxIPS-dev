@@ -9,7 +9,7 @@ import codecs as c
 import time
 from pymodbus.factory import ClientDecoder, ServerDecoder
 from pymodbus.transaction import ModbusSocketFramer
-from pymodbus.compat import  IS_PYTHON3
+from pymodbus.compat import IS_PYTHON3
 
 import logging
 import os.path as path
@@ -19,7 +19,7 @@ import os.path as path
 FORMAT = ('%(asctime)-15s %(threadName)-15s'
           ' %(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s')
 log_filename = 'parser_modbus_log.log'
-logging.basicConfig(format=FORMAT,filename=log_filename)
+logging.basicConfig(format=FORMAT, filename=log_filename)
 log = logging.getLogger()
 
 # -------------------------------------------------------------------------- #
@@ -77,7 +77,7 @@ class Module:
         #         print(item)
 
         decoder = Decoder(framer, self.rules, False)
-        for message in get_messages(option1 , result2):
+        for message in get_messages(option1, result2):
             print(self.rules)
             flag = decoder.decode(message)
             print(flag)
@@ -97,7 +97,6 @@ class Module:
                 print(data)
                 print('message successfully blocked')
                 return data
-
             else:
                 return data
 
@@ -165,7 +164,7 @@ class Decoder(object):
         for (k, v) in message.__dict__.items():
             if isinstance(v, dict):
                 print("%-15s =" % k)
-                for kk,vv in v.items():
+                for kk, vv in v.items():
                     print("  %-12s => %s" % (kk, vv))
 
             elif isinstance(v, collections.Iterable):

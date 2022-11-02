@@ -1,4 +1,3 @@
-
 from __future__ import print_function, absolute_import, division
 import collections
 import textwrap
@@ -14,23 +13,25 @@ import logging
 import os.path as path
 from cpppo.dotdict import dotdict
 from cpppo.server.enip import parser
+
 try:
-    from future_builtins import zip, map # Use Python 3 "lazy" zip, map
+    from future_builtins import zip, map  # Use Python 3 "lazy" zip, map
 except ImportError:
     pass
 
 FORMAT = ('%(asctime)-15s %(threadName)-15s'
           ' %(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s')
 log_filename = 'parser_ethernet_log.log'
-logging.basicConfig(format=FORMAT,filename=log_filename)
+logging.basicConfig(format=FORMAT, filename=log_filename)
 log = logging.getLogger()
+
 
 class Module:
     def __init__(self, incoming=False, verbose=False, options=None):
         # extract the file name from __file__. __file__ is proxymodules/name.py
         self.name = path.splitext(path.basename(__file__))[0]
         self.description = 'Print a hexdump of the received data and check the Ethernet ip frame'
-        #self.incoming = incoming  # incoming means module is on -im chain
+        # self.incoming = incoming  # incoming means module is on -im chain
         self.len = 16
         self.rules = None
         # self.logfile = ('in-' if incoming else 'out-') + \
@@ -45,7 +46,6 @@ class Module:
                 self.rules = options['rules']
         self.handle = None
 
-
     def __del__(self):
         if self.handle is not None:
             self.handle.close()
@@ -59,7 +59,7 @@ class Module:
         try:
             flag = test_parser(data, self.rules)
         except:
-            print('cannot parse*****'+str(data))
+            print('cannot parse*****' + str(data))
             pass
 
         if flag:
@@ -67,7 +67,8 @@ class Module:
                 self.handle = open(self.logfile, 'ab', 0)  # unbuffered
                 # 'ab'means append the content to the file opened in binary without clear it at first
                 print('Logging to file', self.logfile)
-            logentry = bytes('attack was detected on '+time.strftime('%Y%m%d-%H%M%S') + ' ' + str(time.time()) + '\n', 'utf-8')
+            logentry = bytes('attack was detected on ' + time.strftime('%Y%m%d-%H%M%S') + ' ' + str(time.time()) + '\n',
+                             'utf-8')
             # logentry += bytes(str(message+b'\n').encode('utf-8'))
 
             logentry += b'-' * 20 + b'\n'
@@ -81,15 +82,16 @@ class Module:
         else:
             return data
 
-def test_parser(result,rules):
+
+def test_parser(result, rules):
     flag = False
     data = dotdict()
     data.enip = {}
     source = result
-        # b'\x6f\x00   require to be hex in this format
+    # b'\x6f\x00   require to be hex in this format
     with parser.enip_machine() as machine:
-        with contextlib.closing( machine.run( source=source, data=data )) as engine:
-            for m,s in engine:
+        with contextlib.closing(machine.run(source=source, data=data)) as engine:
+            for m, s in engine:
                 pass
     result = data.enip
     for item in result.values():
@@ -112,5 +114,3 @@ def test_parser(result,rules):
     return flag
     # source_result = parser.enip_encode( data.enip )
     # print(source_result)
-
-
