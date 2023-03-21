@@ -180,7 +180,9 @@ class EvidenceProcess(multiprocessing.Process):
         if not text_output or 'Connection timed out' in text_output:
             self.print('Error getting local and public IPs', 0, 1)
         else:
-            public_ip = json.loads(text_output)['ip']
+            # print(text_output)
+            # public_ip = json.loads(text_output)['ip']
+            public_ip = '192.168.0.1'
             IPs.append(public_ip)
         return IPs
 
