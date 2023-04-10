@@ -10,10 +10,10 @@ from tkinter.messagebox import askyesno, showwarning
 import pandas as pd
 from kafka import KafkaConsumer, KafkaProducer
 from kafka.errors import NoBrokersAvailable
-from src.adtk.data import validate_series
 import GUI_iptables
 import argparse
 import sys
+sys.path.append("/home/wuguo-buaa/PycharmProjects/StratosphereLinuxIPS-dev")
 import threading
 import socket
 import socks
@@ -1302,7 +1302,7 @@ def send_data():
         time.sleep(1)
 
 if __name__ == '__main__':
-    t3 = threading.Thread(target=send_data, args=())
+    # t3 = threading.Thread(target=send_data, args=())
     t1 = threading.Thread(target=main, args=())
     t2 = threading.Thread(target=open_receive, args=())
 
@@ -1311,13 +1311,13 @@ if __name__ == '__main__':
     # 主线程执行完，子线程也跟着结束，默认False，要True
     t1.setDaemon(True)
     t2.setDaemon(True)
-    t3.setDaemon(True)
+    # t3.setDaemon(True)
 
     # 4. 开启子线程  start()
 
     t1.start()
     t2.start()
-    t3.start()
+    # t3.start()
     t1.join()
     t2.join()
-    t3.join()
+    # t3.join()
