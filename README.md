@@ -7,7 +7,8 @@
 该软件模块主要借助网上开源的Slips软件二次开发，Slips是一个综合的网络安全系统，可以对多种安全威胁进行发现。
 客户端主要借助其flowmldetection功能来进行流量检测，对特定端口的数据进行抓取与标注后保存到数据库或者表格中，再把这部分数据通过kafka上传到云端进行模型训练。
 
-本软件在工作过程中，打开GUI_firewall以及new——receive即可正常工作（需要保证云端打开了zookeeper以及kafka服务）
+本软件在工作过程中，打开GUI_firewall.py以及new_receive.py即可正常工作（需要保证云端打开了zookeeper以及kafka服务）
+对于流量处理的工作，直接使用下方的slips说明书，不断修改slips.conf并运行slips。py即可
 </h2>
 以下是slips原本的功能介绍
 
