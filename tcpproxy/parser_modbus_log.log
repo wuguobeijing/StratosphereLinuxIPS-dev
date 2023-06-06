@@ -130,3 +130,4 @@
 2022-11-02 14:00:25,516 Thread-7        ERROR    modbus_parser  :156      Unable to parse message - b'\x00\x01\x00\x00\x00\x06\x01\x03\x00\x10\x00\n' with <pymodbus.framer.socket_framer.ModbusSocketFramer object at 0x7f5260776130>
 2022-11-02 14:00:26,514 Thread-7        ERROR    modbus_parser  :156      Unable to parse message - b'\x00\x02\x00\x00\x00\x06\x01\x03\x00\x10\x00\n' with <pymodbus.framer.socket_framer.ModbusSocketFramer object at 0x7f5260776400>
 2022-11-02 14:00:27,514 Thread-7        ERROR    modbus_parser  :156      Unable to parse message - b'\x00\x03\x00\x00\x00\x06\x01\x03\x00\x10\x00\n' with <pymodbus.framer.socket_framer.ModbusSocketFramer object at 0x7f5260776850>
+2023-05-17 14:35:10,939 edge_group-heartbeat WARNING  base           :992      Heartbeat poll expired, leaving group
