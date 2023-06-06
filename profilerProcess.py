@@ -158,6 +158,13 @@ class ProfilerProcess(multiprocessing.Process):
             # There is a conf, but there is no option, or no section or no configuration file specified
             # By default
             self.label = 'unknown'
+                # Get the default label for all this flow. Used during training usually
+        try:
+            self.module_labels = self.config.get('parameters', 'module_labels')
+        except (configparser.NoOptionError, configparser.NoSectionError, NameError):
+            # There is a conf, but there is no option, or no section or no configuration file specified
+            # By default
+            self.module_labels = 'unknown_attack'
 
     def read_whitelist(self):
         """ Reads the content of whitelist.conf and stores information about each ip/org/domain in the database """
@@ -2106,7 +2113,7 @@ class ProfilerProcess(multiprocessing.Process):
                                           saddr=str(saddr_as_obj), sport=sport, daddr=str(daddr_as_obj),
                                           dport=dport, proto=proto, state=state, pkts=pkts, allbytes=allbytes,
                                           spkts=spkts, sbytes=sbytes, appproto=appproto, uid=uid,
-                                          label=self.label, flow_type=flow_type)
+                                          label=self.label, flow_type=flow_type, module_labels=self.module_labels)
                 elif 'dns' in flow_type:
                     __database__.add_out_dns(profileid, twid, starttime, flow_type, uid, query, qclass_name,
                                              qtype_name, rcode_name, answers, ttls)
@@ -2241,7 +2248,7 @@ class ProfilerProcess(multiprocessing.Process):
                     __database__.add_flow(profileid=profileid, twid=twid, stime=starttime, dur=dur,
                                           saddr=str(saddr_as_obj), sport=sport, daddr=str(daddr_as_obj), dport=dport,
                                           proto=proto, state=state, pkts=pkts, allbytes=allbytes, spkts=spkts, sbytes=sbytes,
-                                          appproto=appproto, uid=uid, label=self.label)
+                                          appproto=appproto, uid=uid, label=self.label, module_labels=self.module_labels)
                     # No dns check going in. Probably ok.
 
             ##########################################

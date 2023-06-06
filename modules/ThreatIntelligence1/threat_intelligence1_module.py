@@ -462,6 +462,7 @@ class Module(Module, multiprocessing.Process):
 
                     # If given an IP, ask for it
                     if ip:
+
                         # Block only if the traffic isn't outgoing ICMP port unreachable packet
                         if self.is_outgoing_icmp_packet(protocol,ip_state): continue
 
@@ -473,7 +474,7 @@ class Module(Module, multiprocessing.Process):
                             ip_info = json.loads(ip_info)
                             # Set the evidence on this detection
                             self.set_evidence_malicious_ip(ip, uid, timestamp, ip_info, profileid, twid, ip_state)
-
+                            self.print((ip, ip_state,ip_info), 1, 1)
                         # check if this ip belongs to any of our blacklisted ranges
                         ip_ranges = __database__.get_malicious_ip_ranges()
                         if not ip_ranges: continue
@@ -497,7 +498,7 @@ class Module(Module, multiprocessing.Process):
                                 # If the domain is in the blacklist of IoC. Set an evidence
                                 domain_info = json.loads(domain_info)
                                 self.set_evidence_domain(domain, uid, timestamp, domain_info, is_subdomain, profileid, twid)
-
+                                self.print((domain, domain_info), 1, 1)
                                 # mark this domain as malicious in our database
                                 domain_info =  {'threatintelligence': domain_info }
                                 __database__.setInfoForDomains(domain, domain_info)
